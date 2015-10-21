@@ -10,7 +10,6 @@
 		7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF01BD72BA700DA1D78 /* AppDelegate.swift */; };
 		7E5C8FF61BD72BA700DA1D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF41BD72BA700DA1D78 /* Main.storyboard */; };
 		7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7E5C900D1BD72D4400DA1D78 /* UserRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900C1BD72D4400DA1D78 /* UserRankViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C900F1BD72D5A00DA1D78 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90111BD72D6700DA1D78 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90101BD72D6700DA1D78 /* CityViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -19,6 +18,10 @@
 		7E5C90191BD72F5F00DA1D78 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90181BD72F5F00DA1D78 /* HomeTabViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C907F1BD732DE00DA1D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C907E1BD732DE00DA1D78 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		7E5C90841BD75B6C00DA1D78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C90821BD75B6C00DA1D78 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C908B1BD77F2C00DA1D78 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		7E5C908E1BD7893F00DA1D78 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C908D1BD7893F00DA1D78 /* HttpClient.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +30,6 @@
 		7E5C8FF51BD72BA700DA1D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E5C8FFC1BD72BA700DA1D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		7E5C900C1BD72D4400DA1D78 /* UserRankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRankViewController.swift; sourceTree = "<group>"; };
 		7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		7E5C90101BD72D6700DA1D78 /* CityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		7E5C90181BD72F5F00DA1D78 /* HomeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		7E5C907E1BD732DE00DA1D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7E5C90831BD75B6C00DA1D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRankTableViewController.swift; sourceTree = "<group>"; };
+		7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
+		7E5C908B1BD77F2C00DA1D78 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7E5C908D1BD7893F00DA1D78 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		7E5C90041BD72C5600DA1D78 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7E5C908A1BD77D5A00DA1D78 /* Views */,
+				7E5C90891BD77D4C00DA1D78 /* Models */,
+				7E5C908D1BD7893F00DA1D78 /* HttpClient.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -118,9 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */,
-				7E5C900C1BD72D4400DA1D78 /* UserRankViewController.swift */,
 				7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */,
 				7E5C90101BD72D6700DA1D78 /* CityViewController.swift */,
+				7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */,
 			);
 			name = UserModule;
 			sourceTree = "<group>";
@@ -147,6 +156,22 @@
 				7E5C90161BD72E4700DA1D78 /* MoreViewController.swift */,
 			);
 			name = PersonalModule;
+			sourceTree = "<group>";
+		};
+		7E5C90891BD77D4C00DA1D78 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C908B1BD77F2C00DA1D78 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7E5C908A1BD77D5A00DA1D78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,13 +247,16 @@
 			files = (
 				7E5C90191BD72F5F00DA1D78 /* HomeTabViewController.swift in Sources */,
 				7E5C90171BD72E4700DA1D78 /* MoreViewController.swift in Sources */,
-				7E5C900D1BD72D4400DA1D78 /* UserRankViewController.swift in Sources */,
 				7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */,
 				7E5C900F1BD72D5A00DA1D78 /* CountryViewController.swift in Sources */,
 				7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */,
 				7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */,
+				7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */,
+				7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */,
 				7E5C90111BD72D6700DA1D78 /* CityViewController.swift in Sources */,
 				7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */,
+				7E5C908E1BD7893F00DA1D78 /* HttpClient.swift in Sources */,
+				7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +408,7 @@
 				7E5C90011BD72BA700DA1D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

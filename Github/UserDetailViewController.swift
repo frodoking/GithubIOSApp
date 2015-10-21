@@ -10,12 +10,16 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    @IBOutlet weak var rank: UILabel!
+    @IBOutlet weak var head: UIImageView!
+    @IBOutlet weak var detail: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.blueColor()
-        self.title = "Users"
+        
     }
 
     override func didReceiveMemoryWarning() {
