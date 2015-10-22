@@ -1,76 +1,37 @@
 //
-//  UserRankTableViewController.swift
+//  CityTableViewController.swift
 //  Github
 //
-//  Created by frodo on 15/10/21.
+//  Created by frodo on 15/10/22.
 //  Copyright © 2015年 frodo. All rights reserved.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
-class UserRankTableViewController: UITableViewController {
+class CityTableViewController: UITableViewController {
     
     private struct Storyboard {
-        static let CellReuseIdentifier = "RankCell"
+        static let CellReuseIdentifier = "CityCell"
     }
+
+    var cities = [String]()
     
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-            
-            refreshControl?.endRefreshing()
+    @IBAction func backAction(sender: UIBarButtonItem) {
+        self.navigationController?.dismissViewControllerAnimated(true) { handle in
         }
     }
     
-    var users = [User]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension 
-        // sort=followers&order=desc&q=language:java
-        request = Alamofire.request(.GET, Server.URL.Users, parameters: ["sort" : "followers", "order":"desc", "q":"language:java"])
         
-        refresh()
+        self.automaticallyAdjustsScrollViewInsets=false
+        self.view.backgroundColor = UIColor.whiteColor()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
-        
-    }
-    
-    private func refresh() {
-        refreshControl?.beginRefreshing()
-        request?.responseJSON { response in 
-            if response.result.isSuccess {
-                self.users.removeAll()
-                if let json = response.result.value {
-                    let jsonObject = JSON(json)
-                    let jsonItems = jsonObject["items"].arrayValue
-                    for item in jsonItems {
-                        print(item)
-                        var user = User()
-                        user.parseJson(item)
-                        self.users.append(user)
-                    }
-                    self.tableView.reloadData()
-                }
-            } else {
-                if(response.result.error != nil) {
-                    NSLog("Error: \(response.result.error)")
-                    print(response.result)
-                    print(response.response)
-                }
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +43,7 @@ class UserRankTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.users.count
+        return self.cities.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,25 +51,15 @@ class UserRankTableViewController: UITableViewController {
         return 1
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RankTableViewCell
-
-        // Configure the cell...
-        cell.user = self.users[indexPath.section]
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
         
+        cell.textLabel!.text = cities[indexPath.section];
         
         return cell
     }
-    
-    
-    @IBAction func cityAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("country", sender: self)
-    }
 
-    @IBAction func languageAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("language", sender: self)
-    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -144,18 +95,14 @@ class UserRankTableViewController: UITableViewController {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let viewController = segue.destinationViewController
-        if let controller = viewController as? LanguageTableViewController {
-            controller.entranceType = LanguageEntranceType.UserLanguageEntranceType
-            controller.title = "Language"
-        }
     }
+    */
 
 }

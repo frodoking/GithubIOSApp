@@ -10,8 +10,6 @@
 		7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF01BD72BA700DA1D78 /* AppDelegate.swift */; };
 		7E5C8FF61BD72BA700DA1D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF41BD72BA700DA1D78 /* Main.storyboard */; };
 		7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7E5C900F1BD72D5A00DA1D78 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7E5C90111BD72D6700DA1D78 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90101BD72D6700DA1D78 /* CityViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90141BD72E3600DA1D78 /* DiscoveryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90171BD72E4700DA1D78 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90161BD72E4700DA1D78 /* MoreViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -26,6 +24,10 @@
 		7E5C90F31BD7920500DA1D78 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; };
 		7E5C90F41BD7920500DA1D78 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90F71BD7956A00DA1D78 /* Server.swift */; settings = {ASSET_TAGS = (); }; };
+		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7EEDBFD31BD8E4EE00D576A9 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD21BD8E4EE00D576A9 /* Language.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,8 +138,6 @@
 		7E5C8FF51BD72BA700DA1D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E5C8FFC1BD72BA700DA1D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
-		7E5C90101BD72D6700DA1D78 /* CityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		7E5C90141BD72E3600DA1D78 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		7E5C90161BD72E4700DA1D78 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +150,10 @@
 		7E5C90CA1BD791D100DA1D78 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../../github_opensource/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		7E5C90DC1BD791DF00DA1D78 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../github_opensource/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7E5C90F71BD7956A00DA1D78 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
+		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
+		7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = Core/Common/CityTableViewController.swift; sourceTree = "<group>"; };
+		7EEDBFD21BD8E4EE00D576A9 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,9 @@
 				7E5C908A1BD77D5A00DA1D78 /* Views */,
 				7E5C90891BD77D4C00DA1D78 /* Models */,
 				7E5C90F71BD7956A00DA1D78 /* Server.swift */,
+				7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */,
+				7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */,
+				7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -239,8 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */,
-				7E5C900E1BD72D5A00DA1D78 /* CountryViewController.swift */,
-				7E5C90101BD72D6700DA1D78 /* CityViewController.swift */,
 				7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */,
 			);
 			name = UserModule;
@@ -274,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5C908B1BD77F2C00DA1D78 /* User.swift */,
+				7EEDBFD21BD8E4EE00D576A9 /* Language.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -469,14 +475,16 @@
 			files = (
 				7E5C90191BD72F5F00DA1D78 /* HomeTabViewController.swift in Sources */,
 				7E5C90171BD72E4700DA1D78 /* MoreViewController.swift in Sources */,
+				7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */,
+				7EEDBFD31BD8E4EE00D576A9 /* Language.swift in Sources */,
 				7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */,
-				7E5C900F1BD72D5A00DA1D78 /* CountryViewController.swift in Sources */,
 				7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */,
 				7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */,
 				7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */,
+				7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */,
 				7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */,
-				7E5C90111BD72D6700DA1D78 /* CityViewController.swift in Sources */,
 				7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */,
+				7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */,
 				7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */,
 				7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */,
 			);

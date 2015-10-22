@@ -9,7 +9,9 @@
 import Foundation
 
 struct Server {
-    struct RelativeUrl {
-        static let Base_Url_User: String = "https://api.github.com/search/users?sort=followers&order=desc&q=language:java"
+    struct URL {
+        static let Base: String = "https://api.github.com"
+        static let Users: String = Base + "/search/users" // sort=followers&order=desc&q=language:java
+        static let Country: String = Base + "aa"
     }
 }
