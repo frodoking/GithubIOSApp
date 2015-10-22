@@ -13,20 +13,25 @@ import SwiftyJSON
 class UserRankTableViewController: UITableViewController {
     
     private struct Storyboard {
-        static let CellReuseIdentifier = "rank cell"
+        static let CellReuseIdentifier = "RankCell"
+    }
+    
+    var request: Alamofire.Request? {
+        didSet {
+            oldValue?.cancel()
+            
+            refreshControl?.endRefreshing()
+        }
     }
     
     var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        refresh()
-        
+        request = Alamofire.request(.GET, Server.RelativeUrl.Base_Url_User)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,27 +39,42 @@ class UserRankTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        refresh()
+    }
+    
     private func refresh() {
-        Alamofire.request(.GET, Server.RelativeUrl.Base_Url_User, parameters: ["foo": "bar"])
-            .response { request, response, json, error in
-                if(error != nil) {
-                    NSLog("Error: \(error)")
-                    print(request)
-                    print(response)
+        refreshControl?.beginRefreshing()
+        request?.responseJSON { response in
+            NSLog("Success: \(Server.RelativeUrl.Base_Url_User)")
+            if response.result.isSuccess {
+                self.users.removeAll()
+                if let json = response.result.value {
+                    let jsonObject = JSON(json)
+                    let jsonItems = jsonObject["items"].arrayValue
+                    for item in jsonItems {
+                        print(item)
+                        var user = User()
+                        user.parseJson(item)
+                        self.users.append(user)
+                    }
+                    self.tableView.reloadData()
                 }
-                else {
-                    NSLog("Success: \(Server.RelativeUrl.Base_Url_User)")
-                    
-                    let jsonObject = JSON(json!)
-                    
-                    
-//                    
-//                    self.users = array as? [User]
-//                    
-//                    self.tableView.reloadData()
-                    
-                    print(jsonObject.rawString())
+            } else {
+                if(response.result.error != nil) {
+                    NSLog("Error: \(response.result.error)")
+                    print(response.result)
+                    print(response.response)
                 }
+            }
         }
     }
 
@@ -67,7 +87,7 @@ class UserRankTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4; //self.users.count
+        return self.users.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,6 +101,7 @@ class UserRankTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.user = self.users[indexPath.section]
+        
         
         return cell
     }
