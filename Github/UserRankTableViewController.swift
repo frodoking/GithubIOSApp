@@ -7,17 +7,55 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class UserRankTableViewController: UITableViewController {
+    
+    private struct Storyboard {
+        static let CellReuseIdentifier = "rank cell"
+    }
+    
+    var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        refresh()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    private func refresh() {
+        Alamofire.request(.GET, Server.RelativeUrl.Base_Url_User, parameters: ["foo": "bar"])
+            .response { request, response, json, error in
+                if(error != nil) {
+                    NSLog("Error: \(error)")
+                    print(request)
+                    print(response)
+                }
+                else {
+                    NSLog("Success: \(Server.RelativeUrl.Base_Url_User)")
+                    
+                    let jsonObject = JSON(json!)
+                    
+                    
+//                    
+//                    self.users = array as? [User]
+//                    
+//                    self.tableView.reloadData()
+                    
+                    print(jsonObject.rawString())
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +67,23 @@ class UserRankTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 4; //self.users.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RankTableViewCell
 
         // Configure the cell...
-
+        cell.user = self.users[indexPath.section]
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -7,29 +7,19 @@
 //
 
 import UIKit
+import Alamofire
 
 class RankTableViewCell: UITableViewCell {
     
-    var user: User? {
-        didSet {
-            updateUi()
-        }
-    }
- 
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var user: User? {
+        didSet {
+            updateUi()
+        }
     }
     
     private func updateUi() {
@@ -39,14 +29,18 @@ class RankTableViewCell: UITableViewCell {
         detailLabel?.text = nil
         
         if let user = self.user {
-            titleLabel?.text = user.login
+            rankLabel?.text = "\(user.rank)"
+            mainLabel?.text = user.login
             detailLabel?.text = user.avatar_url
         }
         
-        let request = GithubRequest()
-        request.fetch((user?.avatar_url)!) { (data) -> Void in
-            let imageData = UIImage(data: data)
-            self.headImageView?.image = imageData
+        Alamofire.request(.GET, (user?.avatar_url)!)
+            .responseData { response in
+                print(response.request)
+                print(response.response)
+                print(response.result)
+                let imageData = UIImage(data: response.data!)
+                self.titleImageView?.image = imageData
         }
     }
 

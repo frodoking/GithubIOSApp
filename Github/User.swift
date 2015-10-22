@@ -7,8 +7,9 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 public struct User: CustomStringConvertible {
+
     public let myID: Double
     public let rank: Int
     public let categoryLocation: String
@@ -44,16 +45,7 @@ public struct User: CustomStringConvertible {
     public let created_at: String
     
     public var description: String {
-        return "User: { \(login), \(avatar_url) }"    }
-    
-    private func toJSONString(urlData: AnyObject)->NSString{
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(urlData, options: NSJSONWritingOptions.PrettyPrinted)
-            let strJson=NSString(data: jsonData, encoding: NSUTF8StringEncoding)
-            return strJson!
-
-        } catch {
-            return ""
-        }
+//        let json = JSON(NSData(self))?
+        return ""
     }
 }
