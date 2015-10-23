@@ -11,6 +11,7 @@ import UIKit
 class RepositoriesTableViewController: UITableViewController {
 
     var viewModule: RepositoriesViewModule?
+    var language: String = "JavaScript"
     
     private struct Storyboard {
         static let CellReuseIdentifier = "RepositoriesCell"
@@ -36,15 +37,33 @@ class RepositoriesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if let languageAppear = NSUserDefaults.standardUserDefaults().objectForKey("languageAppear1")?.integerValue {
+            if (languageAppear == 2) {
+                NSUserDefaults.standardUserDefaults().setObject("1", forKey: "languageAppear1")
+                if let languageTmp = NSUserDefaults.standardUserDefaults().objectForKey("language1")?.stringValue {
+                    if (languageTmp.isEmpty) {
+                        self.language = "JavaScript";
+                    } else {
+                        self.language = languageTmp
+                    }
+                }
+                
+                self.title = language;
+            }
+        }
+        
+        refresh()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
-        
     }
     
     private func refresh() {
         refreshControl?.beginRefreshing()
-        viewModule!.loadDataFromApiWithIsFirst(true, language: "java") { repositories in
+        viewModule!.loadDataFromApiWithIsFirst(true, language: self.language) { repositories in
             self.refreshControl?.endRefreshing()
             if repositories.count > 0 {
                 self.repositories = repositories as! [Repository]
@@ -118,6 +137,10 @@ class RepositoriesTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
 
     
     // MARK: - Navigation

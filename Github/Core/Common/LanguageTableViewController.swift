@@ -16,7 +16,7 @@ class LanguageTableViewController: UITableViewController {
     var languages = [String]()
     var language: String = "Language"
     
-    var entranceType: LanguageEntranceType = LanguageEntranceType.UserLanguageEntranceType
+    var entranceType: LanguageEntranceType = LanguageEntranceType.RepLanguageEntranceType
     
     @IBAction func backAction(sender: UIBarButtonItem) {
         self.navigationController?.dismissViewControllerAnimated(true) { handle in
@@ -112,6 +112,25 @@ class LanguageTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch entranceType {
+        case .UserLanguageEntranceType:
+            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear")
+            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language")
+            break
+        case .RepLanguageEntranceType:
+            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear1")
+            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language1")
+            break
+        case .TrendingLanguageEntranceType:
+            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear2")
+            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language2")
+            break
+        }
+        self.navigationController?.dismissViewControllerAnimated(true) { handle in
+        }
+    }
 
     /*
     // MARK: - Navigation
