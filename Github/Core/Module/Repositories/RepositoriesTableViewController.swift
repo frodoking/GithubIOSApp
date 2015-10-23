@@ -1,33 +1,34 @@
 //
-//  UserRankTableViewController.swift
+//  RepositoriesTableViewController.swift
 //  Github
 //
-//  Created by frodo on 15/10/21.
+//  Created by frodo on 15/10/23.
 //  Copyright © 2015年 frodo. All rights reserved.
 //
 
 import UIKit
 
-class UserRankTableViewController: UITableViewController {
-    
-    var viewModule: UserRankViewModule?
-    var index: Int = 1
+class RepositoriesTableViewController: UITableViewController {
+
+    var viewModule: RepositoriesViewModule?
     
     private struct Storyboard {
-        static let CellReuseIdentifier = "RankCell"
+        static let CellReuseIdentifier = "RepositoriesCell"
     }
     
-    var users = [User]()
+    var repositories = [Repository]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
-        viewModule = UserRankViewModule()
+        viewModule = RepositoriesViewModule()
         
         refresh()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,10 +44,10 @@ class UserRankTableViewController: UITableViewController {
     
     private func refresh() {
         refreshControl?.beginRefreshing()
-        viewModule!.loadDataFromApiWithIsFirst(true, currentIndex: index) { users in
+        viewModule!.loadDataFromApiWithIsFirst(true, language: "java") { repositories in
             self.refreshControl?.endRefreshing()
-            if users.count > 0 {
-                self.users = users as! [User]
+            if repositories.count > 0 {
+                self.repositories = repositories as! [Repository]
                 self.tableView.reloadData()
             }
         }
@@ -61,33 +62,28 @@ class UserRankTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.users.count
+        return self.repositories.count
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RankTableViewCell
+    @IBAction func languageAction(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("repositoriesLanguage", sender: self)
+    }
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RepositoriesTableViewCell
+        
         // Configure the cell...
-        cell.user = self.users[indexPath.section]
+        cell.repository = self.repositories[indexPath.section]
         
         
         return cell
     }
     
-    
-    @IBAction func cityAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("country", sender: self)
-    }
-
-    @IBAction func languageAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("language", sender: self)
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -123,7 +119,7 @@ class UserRankTableViewController: UITableViewController {
     }
     */
 
-
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -132,7 +128,7 @@ class UserRankTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         let viewController = segue.destinationViewController
         if let controller = viewController as? LanguageTableViewController {
-            controller.entranceType = LanguageEntranceType.UserLanguageEntranceType
+            controller.entranceType = LanguageEntranceType.RepLanguageEntranceType
             controller.title = "Language"
         }
     }

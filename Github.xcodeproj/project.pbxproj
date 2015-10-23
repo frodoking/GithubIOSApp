@@ -10,7 +10,6 @@
 		7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF01BD72BA700DA1D78 /* AppDelegate.swift */; };
 		7E5C8FF61BD72BA700DA1D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C8FF41BD72BA700DA1D78 /* Main.storyboard */; };
 		7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90141BD72E3600DA1D78 /* DiscoveryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90171BD72E4700DA1D78 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90161BD72E4700DA1D78 /* MoreViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7E5C90191BD72F5F00DA1D78 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90181BD72F5F00DA1D78 /* HomeTabViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -24,8 +23,13 @@
 		7E5C90F31BD7920500DA1D78 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; };
 		7E5C90F41BD7920500DA1D78 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90F71BD7956A00DA1D78 /* Server.swift */; settings = {ASSET_TAGS = (); }; };
+		7E8343EB1BDA19690019AC21 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8343EA1BDA19690019AC21 /* Theme.swift */; settings = {ASSET_TAGS = (); }; };
+		7E8343F51BDA1F6B0019AC21 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8343F41BDA1F6B0019AC21 /* Repository.swift */; settings = {ASSET_TAGS = (); }; };
+		7E8343F71BDA2C320019AC21 /* RepositoriesViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8343F61BDA2C320019AC21 /* RepositoriesViewModule.swift */; settings = {ASSET_TAGS = (); }; };
 		7E9776AA1BD9D72B001E1904 /* UserRankViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */; settings = {ASSET_TAGS = (); }; };
 		7E9776AC1BD9D80D001E1904 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776AB1BD9D80D001E1904 /* DataSource.swift */; settings = {ASSET_TAGS = (); }; };
+		7E9776AE1BDA0F30001E1904 /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776AD1BDA0F30001E1904 /* RepositoriesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7E9776B21BDA1399001E1904 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776B11BDA1399001E1904 /* RepositoriesTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -140,7 +144,6 @@
 		7E5C8FF51BD72BA700DA1D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E5C8FFC1BD72BA700DA1D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		7E5C90141BD72E3600DA1D78 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		7E5C90161BD72E4700DA1D78 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		7E5C90181BD72F5F00DA1D78 /* HomeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
@@ -152,8 +155,13 @@
 		7E5C90CA1BD791D100DA1D78 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../../github_opensource/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		7E5C90DC1BD791DF00DA1D78 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../github_opensource/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7E5C90F71BD7956A00DA1D78 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		7E8343EA1BDA19690019AC21 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7E8343F41BDA1F6B0019AC21 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		7E8343F61BDA2C320019AC21 /* RepositoriesViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewModule.swift; sourceTree = "<group>"; };
 		7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRankViewModule.swift; sourceTree = "<group>"; };
 		7E9776AB1BD9D80D001E1904 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		7E9776AD1BDA0F30001E1904 /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewController.swift; path = Core/Module/Repositories/RepositoriesTableViewController.swift; sourceTree = "<group>"; };
+		7E9776B11BDA1399001E1904 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewCell.swift; path = Core/Common/Views/RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = Core/Common/CityTableViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +239,7 @@
 				7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */,
 				7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */,
 				7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */,
+				7E8343EA1BDA19690019AC21 /* Theme.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -266,7 +275,8 @@
 		7E5C90081BD72CA000DA1D78 /* RepositoriesModule */ = {
 			isa = PBXGroup;
 			children = (
-				7E5C90121BD72E0E00DA1D78 /* RepositoriesViewController.swift */,
+				7E9776B01BDA0F7D001E1904 /* ViewModule */,
+				7E9776AF1BDA0F6D001E1904 /* ViewController */,
 			);
 			name = RepositoriesModule;
 			sourceTree = "<group>";
@@ -285,6 +295,7 @@
 				7E5C908B1BD77F2C00DA1D78 /* User.swift */,
 				7EEDBFD21BD8E4EE00D576A9 /* Language.swift */,
 				7E9776AB1BD9D80D001E1904 /* DataSource.swift */,
+				7E8343F41BDA1F6B0019AC21 /* Repository.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */,
+				7E9776B11BDA1399001E1904 /* RepositoriesTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -336,6 +348,22 @@
 				7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		7E9776AF1BDA0F6D001E1904 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E9776AD1BDA0F30001E1904 /* RepositoriesTableViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		7E9776B01BDA0F7D001E1904 /* ViewModule */ = {
+			isa = PBXGroup;
+			children = (
+				7E8343F61BDA2C320019AC21 /* RepositoriesViewModule.swift */,
+			);
+			name = ViewModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,18 +526,22 @@
 				7E5C90191BD72F5F00DA1D78 /* HomeTabViewController.swift in Sources */,
 				7E5C90171BD72E4700DA1D78 /* MoreViewController.swift in Sources */,
 				7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */,
+				7E9776AE1BDA0F30001E1904 /* RepositoriesTableViewController.swift in Sources */,
 				7EEDBFD31BD8E4EE00D576A9 /* Language.swift in Sources */,
 				7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */,
 				7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */,
 				7E9776AC1BD9D80D001E1904 /* DataSource.swift in Sources */,
-				7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */,
+				7E8343F71BDA2C320019AC21 /* RepositoriesViewModule.swift in Sources */,
 				7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */,
+				7E8343EB1BDA19690019AC21 /* Theme.swift in Sources */,
 				7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */,
+				7E8343F51BDA1F6B0019AC21 /* Repository.swift in Sources */,
 				7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */,
 				7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */,
 				7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */,
 				7E9776AA1BD9D72B001E1904 /* UserRankViewModule.swift in Sources */,
 				7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */,
+				7E9776B21BDA1399001E1904 /* RepositoriesTableViewCell.swift in Sources */,
 				7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

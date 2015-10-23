@@ -10,7 +10,7 @@ import SwiftyJSON
 
 public class User: NSObject {
 
-    public var myID: Double?
+    public var id: Double?
     public var rank: Int?
     public var categoryLocation: String?
     public var categoryLanguage: String?
@@ -45,8 +45,8 @@ public class User: NSObject {
     public var created_at: String?
     
     public func parseJson(json: JSON) {
-        if let myID = json["myID"].double {
-            self.myID = myID
+        if let id = json["id"].double {
+            self.id = id
         }
         
         if let rank = json["rank"].int {
@@ -165,7 +165,7 @@ public class User: NSObject {
     }
     
     override public var description: String {
-      return "my ID: \(myID) \n" +
+      return "my id: \(id) \n" +
         "login: \(login) \n" +
         "url: \(url)"
     }
