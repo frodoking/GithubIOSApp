@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Repositories" image="more" id="Zrz-A1-eH0"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Repositories" image="github160" id="Zrz-A1-eH0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOw-dY-HHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="Discovery" image="more" id="lxR-uy-Sg8" userLabel="Discovery"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Discovery" image="github60" id="lxR-uy-Sg8" userLabel="Discovery"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WW-1m-X7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -268,7 +268,7 @@
         <scene sceneID="o6k-98-e5t">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CWF-ml-c2D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" image="more" id="KfU-4e-9RM"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="github60" id="KfU-4e-9RM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u4b-WF-LKQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -383,6 +383,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="github160" width="30" height="30"/>
+        <image name="github60" width="30" height="30"/>
         <image name="more" width="30" height="30"/>
     </resources>
 </document>

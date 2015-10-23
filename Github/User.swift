@@ -5,11 +5,10 @@
 //  Created by frodo on 15/10/21.
 //  Copyright © 2015年 frodo. All rights reserved.
 //
-
-import Foundation
+import UIKit
 import SwiftyJSON
 
-public struct User: CustomStringConvertible {
+public class User: NSObject {
 
     public var myID: Double?
     public var rank: Int?
@@ -45,7 +44,7 @@ public struct User: CustomStringConvertible {
     public var following: Int?
     public var created_at: String?
     
-    public mutating func parseJson(json: JSON) {
+    public func parseJson(json: JSON) {
         if let myID = json["myID"].double {
             self.myID = myID
         }
@@ -165,8 +164,9 @@ public struct User: CustomStringConvertible {
         } 
     }
     
-    public var description: String {
-//        let json = JSON(NSData(self))?
-        return ""
+    override public var description: String {
+      return "my ID: \(myID) \n" +
+        "login: \(login) \n" +
+        "url: \(url)"
     }
 }

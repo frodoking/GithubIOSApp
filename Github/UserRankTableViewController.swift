@@ -7,21 +7,14 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class UserRankTableViewController: UITableViewController {
     
+    var viewModule: UserRankViewModule?
+    var index: Int = 1
+    
     private struct Storyboard {
         static let CellReuseIdentifier = "RankCell"
-    }
-    
-    var request: Alamofire.Request? {
-        didSet {
-            oldValue?.cancel()
-            
-            refreshControl?.endRefreshing()
-        }
     }
     
     var users = [User]()
@@ -30,8 +23,8 @@ class UserRankTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension 
-        // sort=followers&order=desc&q=language:java
-        request = Alamofire.request(.GET, Server.URL.Users, parameters: ["sort" : "followers", "order":"desc", "q":"language:java"])
+        
+        viewModule = UserRankViewModule()
         
         refresh()
         // Uncomment the following line to preserve selection between presentations
@@ -49,26 +42,11 @@ class UserRankTableViewController: UITableViewController {
     
     private func refresh() {
         refreshControl?.beginRefreshing()
-        request?.responseJSON { response in 
-            if response.result.isSuccess {
-                self.users.removeAll()
-                if let json = response.result.value {
-                    let jsonObject = JSON(json)
-                    let jsonItems = jsonObject["items"].arrayValue
-                    for item in jsonItems {
-                        print(item)
-                        var user = User()
-                        user.parseJson(item)
-                        self.users.append(user)
-                    }
-                    self.tableView.reloadData()
-                }
-            } else {
-                if(response.result.error != nil) {
-                    NSLog("Error: \(response.result.error)")
-                    print(response.result)
-                    print(response.response)
-                }
+        viewModule!.loadDataFromApiWithIsFirst(true, currentIndex: index) { users in
+            self.refreshControl?.endRefreshing()
+            if users.count > 0 {
+                self.users = users as! [User]
+                self.tableView.reloadData()
             }
         }
     }

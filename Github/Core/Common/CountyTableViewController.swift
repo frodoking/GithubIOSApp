@@ -152,10 +152,12 @@ class CountyTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let viewController = segue.destinationViewController
-        if let controller = viewController as? CityTableViewController {
-            controller.cities = self.cityArray
-            controller.title = country
+        if let
+        navigationController = segue.destinationViewController as? UINavigationController,
+            detailViewController = navigationController.topViewController as? CityTableViewController {
+                detailViewController.cities = cityArray
+                detailViewController.title = country
         }
+        
     }
 }

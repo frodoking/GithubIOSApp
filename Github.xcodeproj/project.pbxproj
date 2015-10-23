@@ -24,6 +24,8 @@
 		7E5C90F31BD7920500DA1D78 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; };
 		7E5C90F41BD7920500DA1D78 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90D31BD791D100DA1D78 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90F71BD7956A00DA1D78 /* Server.swift */; settings = {ASSET_TAGS = (); }; };
+		7E9776AA1BD9D72B001E1904 /* UserRankViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */; settings = {ASSET_TAGS = (); }; };
+		7E9776AC1BD9D80D001E1904 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9776AB1BD9D80D001E1904 /* DataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -150,6 +152,8 @@
 		7E5C90CA1BD791D100DA1D78 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../../github_opensource/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		7E5C90DC1BD791DF00DA1D78 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../github_opensource/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7E5C90F71BD7956A00DA1D78 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRankViewModule.swift; sourceTree = "<group>"; };
+		7E9776AB1BD9D80D001E1904 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = Core/Common/CityTableViewController.swift; sourceTree = "<group>"; };
@@ -245,8 +249,8 @@
 		7E5C90061BD72C8900DA1D78 /* UserModule */ = {
 			isa = PBXGroup;
 			children = (
-				7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */,
-				7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */,
+				7E9776A81BD9D6F9001E1904 /* ViewController */,
+				7E97769F1BD9D6E1001E1904 /* ViewModule */,
 			);
 			name = UserModule;
 			sourceTree = "<group>";
@@ -280,6 +284,7 @@
 			children = (
 				7E5C908B1BD77F2C00DA1D78 /* User.swift */,
 				7EEDBFD21BD8E4EE00D576A9 /* Language.swift */,
+				7E9776AB1BD9D80D001E1904 /* DataSource.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +319,23 @@
 				7E5C90ED1BD791DF00DA1D78 /* Alamofire OSX Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7E97769F1BD9D6E1001E1904 /* ViewModule */ = {
+			isa = PBXGroup;
+			children = (
+				7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */,
+			);
+			name = ViewModule;
+			sourceTree = "<group>";
+		};
+		7E9776A81BD9D6F9001E1904 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C900A1BD72D2E00DA1D78 /* UserDetailViewController.swift */,
+				7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,12 +501,14 @@
 				7EEDBFD31BD8E4EE00D576A9 /* Language.swift in Sources */,
 				7E5C8FF11BD72BA700DA1D78 /* AppDelegate.swift in Sources */,
 				7E5C900B1BD72D2E00DA1D78 /* UserDetailViewController.swift in Sources */,
+				7E9776AC1BD9D80D001E1904 /* DataSource.swift in Sources */,
 				7E5C90131BD72E0E00DA1D78 /* RepositoriesViewController.swift in Sources */,
 				7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */,
 				7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */,
 				7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */,
 				7E5C90151BD72E3600DA1D78 /* DiscoveryViewController.swift in Sources */,
 				7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */,
+				7E9776AA1BD9D72B001E1904 /* UserRankViewModule.swift in Sources */,
 				7E5C90F81BD7956A00DA1D78 /* Server.swift in Sources */,
 				7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */,
 			);
