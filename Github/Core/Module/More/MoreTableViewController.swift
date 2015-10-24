@@ -10,10 +10,7 @@ import UIKit
 import Alamofire
 
 class MoreTableViewController: UITableViewController {
-    private struct Storyboard {
-        static let CellReuseIdentifier = "MoreCell"
-    }
-
+    
     var currentLogin: String?
     var currentAvatarUrl: String?
     
@@ -47,9 +44,9 @@ class MoreTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if (currentLogin != nil) {
-            return 4
+            return items.count
         } else {
-            return 3
+            return items.count - 1
         }
     }
 
@@ -60,7 +57,7 @@ class MoreTableViewController: UITableViewController {
 
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.MoreCell, forIndexPath: indexPath)
 
         // Configure the cell...
         if (indexPath.section == 0 && currentLogin != nil) {

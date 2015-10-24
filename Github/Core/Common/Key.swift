@@ -14,6 +14,12 @@ public struct Key {
         static let CurrentAvatarUrl = "currentAvatarUrl"
     }
     public struct Language {
-        
+    }
+    
+    public struct CellReuseIdentifier {
+        static let RankCell = "RankCell"
+        static let DiscoveryCell = "DiscoveryCell"
+        static let RepositoriesCell = "RepositoriesCell"
+        static let MoreCell = "MoreCell"
     }
 }

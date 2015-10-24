@@ -29,13 +29,13 @@ class RepositoriesTableViewCell: UITableViewCell {
     
     private func updateUi() {
         if let repository = self.repository {
-            rankLabel.text = "\(repository.id)"
-            repositoryLabel.text = repository.name
-            userLabel.text = "Owner: \(repository.owner?.login)"
+            rankLabel.text = "\(repository.id!)"
+            repositoryLabel.text = repository.name!
+            userLabel.text = "Owner: \(repository.owner?.login!)"
             
-            descriptionLabel.text = repository.repositoryDescription
-            starLabel.text = "Star: \(repository.stargazers_count)"
-            forkLabel.text = "Fork: \(repository.forks_count)"
+            descriptionLabel.text = repository.repositoryDescription!
+            starLabel.text = "Star: \(repository.stargazers_count!)"
+            forkLabel.text = "Fork: \(repository.forks_count!)"
             
             Alamofire.request(.GET, (repository.owner!.avatar_url)!)
                 .responseData { response in

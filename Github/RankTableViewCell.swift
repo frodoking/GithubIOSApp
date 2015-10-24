@@ -29,9 +29,9 @@ class RankTableViewCell: UITableViewCell {
         detailLabel?.text = nil
         
         if let user = self.user {
-            rankLabel?.text = "\(user.rank)"
-            mainLabel?.text = user.login
-            detailLabel?.text = user.description
+            rankLabel.text = "\(user.rank!)"
+            mainLabel.text = user.login!
+            detailLabel.text = user.description
         }
         
         Alamofire.request(.GET, (user?.avatar_url)!)

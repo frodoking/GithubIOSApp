@@ -13,10 +13,6 @@ class RepositoriesTableViewController: UITableViewController {
     var viewModule: RepositoriesViewModule?
     var language: String = "JavaScript"
     
-    private struct Storyboard {
-        static let CellReuseIdentifier = "RepositoriesCell"
-    }
-    
     var repositories = [Repository]()
 
     override func viewDidLoad() {
@@ -94,7 +90,7 @@ class RepositoriesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RepositoriesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.RepositoriesCell, forIndexPath: indexPath) as! RepositoriesTableViewCell
         
         // Configure the cell...
         cell.repository = self.repositories[indexPath.section]

@@ -13,10 +13,6 @@ class UserRankTableViewController: UITableViewController {
     var viewModule: UserRankViewModule?
     var index: Int = 1
     
-    private struct Storyboard {
-        static let CellReuseIdentifier = "RankCell"
-    }
-    
     var users = [User]()
 
     override func viewDidLoad() {
@@ -71,7 +67,7 @@ class UserRankTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! RankTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.RankCell, forIndexPath: indexPath) as! RankTableViewCell
 
         // Configure the cell...
         cell.user = self.users[indexPath.section]

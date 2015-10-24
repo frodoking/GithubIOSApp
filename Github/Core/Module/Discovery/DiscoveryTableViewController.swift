@@ -9,10 +9,6 @@
 import UIKit
 
 class DiscoveryTableViewController: UITableViewController {
-
-    private struct Storyboard {
-        static let CellReuseIdentifier = "DiscoveryCell"
-    }
     
     let items = ["Trending", "Showcases", "News", "Search", "GithubRanking", "GithubAwards"]
     
@@ -48,7 +44,7 @@ class DiscoveryTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.DiscoveryCell, forIndexPath: indexPath)
 
         // Configure the cell...
         let text = self.items[indexPath.section]
