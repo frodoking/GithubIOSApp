@@ -39,9 +39,7 @@ class RepositoriesTableViewCell: UITableViewCell {
             
             Alamofire.request(.GET, (repository.owner!.avatar_url)!)
                 .responseData { response in
-                    print(response.request)
-                    print(response.response)
-                    print(response.result)
+                    NSLog("Fetch: Image: \(self.repository?.owner!.avatar_url)")
                     let imageData = UIImage(data: response.data!)
                     self.titleImageView?.image = imageData
             }

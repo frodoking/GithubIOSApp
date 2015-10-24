@@ -8,12 +8,13 @@
 
 import UIKit
 
-class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
+class HomeTabViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        delegate = self
+        self.tabBar.backgroundColor = UIColor.grayColor()
+        self.tabBar.tintColor = UIColor.grayColor()
     } 
 }

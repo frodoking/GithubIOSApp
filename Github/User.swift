@@ -166,7 +166,6 @@ public class User: NSObject {
     
     override public var description: String {
       return "my id: \(id) \n" +
-        "login: \(login) \n" +
         "url: \(url)"
     }
 }

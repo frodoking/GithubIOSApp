@@ -36,9 +36,7 @@ class RankTableViewCell: UITableViewCell {
         
         Alamofire.request(.GET, (user?.avatar_url)!)
             .responseData { response in
-                print(response.request)
-                print(response.response)
-                print(response.result)
+                NSLog("Fetch: Image: \(self.user!.avatar_url)")
                 let imageData = UIImage(data: response.data!)
                 self.titleImageView?.image = imageData
         }
