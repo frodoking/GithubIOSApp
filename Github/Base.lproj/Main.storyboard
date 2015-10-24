@@ -184,6 +184,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="zIF-P9-t4o">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshAction:" destination="nUb-Hm-b36" eventType="valueChanged" id="c2h-RH-2kv"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="WmG-E7-EJo" kind="presentation" identifier="country" id="84f-Gd-0aj"/>
                         <segue destination="qg2-7l-shp" kind="presentation" identifier="language" id="GAi-u8-CgT"/>
@@ -354,6 +360,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="OKz-JT-IVV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshAction:" destination="tlS-Hr-54r" eventType="valueChanged" id="i7k-s5-Lnl"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="qg2-7l-shp" kind="presentation" identifier="repositoriesLanguage" id="3aM-Ig-V50"/>
                     </connections>

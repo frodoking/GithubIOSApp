@@ -29,12 +29,10 @@ class UserRankTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+    } 
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
-        
+    @IBAction func refreshAction(sender: UIRefreshControl) {
+        refresh()
     }
     
     private func refresh() {

@@ -23,14 +23,11 @@ class RepositoriesTableViewController: UITableViewController {
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
         viewModule = RepositoriesViewModule()
-        
-        refresh()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,9 +49,8 @@ class RepositoriesTableViewController: UITableViewController {
         refresh()
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+    @IBAction func refreshAction(sender: UIRefreshControl) {
+        refresh()
     }
     
     private func refresh() {
