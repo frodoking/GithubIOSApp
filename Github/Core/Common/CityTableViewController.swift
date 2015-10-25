@@ -9,16 +9,11 @@
 import UIKit
 
 class CityTableViewController: UITableViewController {
-    
-    private struct Storyboard {
-        static let CellReuseIdentifier = "CityCell"
-    }
 
     var cities = [String]()
     
     @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.dismissViewControllerAnimated(true) { handle in
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -52,9 +47,9 @@ class CityTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.CityCell, forIndexPath: indexPath)
         
-        cell.textLabel!.text = cities[indexPath.section];
+        cell.textLabel!.text = cities[indexPath.section]
         
         return cell
     }

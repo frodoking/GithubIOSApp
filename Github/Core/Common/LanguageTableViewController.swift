@@ -9,9 +9,6 @@
 import UIKit
 
 class LanguageTableViewController: UITableViewController {
-    private struct Storyboard {
-        static let CellReuseIdentifier = "LanguageCell"
-    }
 
     var languages = [String]()
     var language: String = "Language"
@@ -19,8 +16,7 @@ class LanguageTableViewController: UITableViewController {
     var entranceType: LanguageEntranceType = LanguageEntranceType.RepLanguageEntranceType
     
     @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.dismissViewControllerAnimated(true) { handle in
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -71,9 +67,9 @@ class LanguageTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.LanguageCell, forIndexPath: indexPath)
         
-        cell.textLabel!.text=languages[indexPath.section];
+        cell.textLabel!.text=languages[indexPath.section]
         
         return cell
     }

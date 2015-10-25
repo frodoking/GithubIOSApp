@@ -11,11 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class CountyTableViewController: UITableViewController {
-    
-    private struct Storyboard {
-        static let CellReuseIdentifier = "CountyCell"
-    }
-    
+
     var countrys = [String]()
     
     var country: String?
@@ -23,8 +19,7 @@ class CountyTableViewController: UITableViewController {
 
 
     @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.dismissViewControllerAnimated(true) { handle in
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     } 
     
     override func viewDidLoad() {
@@ -61,9 +56,9 @@ class CountyTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.CountyCell, forIndexPath: indexPath)
 
-        cell.textLabel!.text=countrys[indexPath.section];
+        cell.textLabel!.text=countrys[indexPath.section]
 
         return cell
     }

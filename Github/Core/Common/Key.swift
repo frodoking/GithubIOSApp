@@ -21,5 +21,9 @@ public struct Key {
         static let DiscoveryCell = "DiscoveryCell"
         static let RepositoriesCell = "RepositoriesCell"
         static let MoreCell = "MoreCell"
+        
+        static let LanguageCell = "LanguageCell"
+        static let CountyCell = "CountyCell"
+        static let CityCell = "CityCell"
     }
 }
