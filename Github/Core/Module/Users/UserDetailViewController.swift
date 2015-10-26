@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UIScrollViewDelegate {
+class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
@@ -22,8 +22,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     
     
     @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
-    @IBOutlet weak var scrollView: UIScrollView!
-
+    @IBOutlet weak var tableView: UITableView!
     
     var user: User? {
         didSet {
@@ -40,11 +39,11 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         }
         
         if let login = user!.login {
-            loginButton.titleLabel?.text = login
+            loginButton.setTitle(login, forState:UIControlState.Normal)
         }
         
         if let email = user!.email {
-            emaiButton.titleLabel?.text = email
+            emaiButton.setTitle(email, forState:UIControlState.Normal)
         }
         
         if let name = user!.name {
@@ -52,7 +51,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         }
         
         if let blog = user!.blog {
-            blogButton.titleLabel?.text = blog
+            blogButton.setTitle(blog, forState:UIControlState.Normal)
         }
         
         if let company = user!.company {
@@ -87,43 +86,94 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         viewPagerIndicator.showBottomLine = true //基线是否显示
         viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
         viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
-        
-        //样式
-        scrollView.pagingEnabled = true
-        scrollView.bounces = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.delegate = self
-        //内容大小
-        scrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(viewPagerIndicator.count ), height: scrollView.bounds.height)
-        
-        //根据顶部的数量加入子Item
-        for(var i = 0; i < viewPagerIndicator.count; i++ ) {
-            let title = viewPagerIndicator.titles[i] as! String
-            let textView = UILabel(frame: CGRectMake(self.view.bounds.width * CGFloat(i), 0, self.view.bounds.width, scrollView.bounds.height))
-            textView.text = title
-            textView.textAlignment = NSTextAlignment.Center
-            scrollView.addSubview(textView)
-        }
-
-        //tableView.estimatedRowHeight = tableView.rowHeight
-        //tableView.rowHeight = UITableViewAutomaticDimension
+ 
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
     
 
         // Do any additional setup after loading the view.
     }
-    
-    //点击顶部选中后回调
+}
+
+// MARK: - ViewPagerIndicator
+extension UserDetailViewController {
+    // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
-        scrollView.scrollRectToVisible(CGRectMake(self.view.bounds.width * CGFloat(indicatorIndex), 0, self.view.bounds.width, scrollView.bounds.height), animated: true)
-    }
-    //滑动scrollview回调
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let xOffset: CGFloat = scrollView.contentOffset.x
-        let x: Float = Float(xOffset)
-        let width:Float = Float(self.view.bounds.width)
-        let index = Int((x + (width * 0.5)) / width)
-        viewPagerIndicator.setSelectedIndex(index) //改变顶部选中
+        
     }
 }
+
+// MARK: - UITableViewDataSource
+extension UserDetailViewController {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserRankDetailCell, forIndexPath: indexPath)
+        
+        // Configure the cell...
+        // cell.user = self.users[indexPath.section]
+        
+        
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension UserDetailViewController {
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    // Return false if you do not want the specified item to be editable.
+    return true
+    }
+    */
+    
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+    }
+    */
+    
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    
+    }
+    */
+    
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    // Return false if you do not want the item to be re-orderable.
+    return true
+    }
+    */
+}
+
+// MARK: - Navigation
+extension UserDetailViewController {
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+}
+
+

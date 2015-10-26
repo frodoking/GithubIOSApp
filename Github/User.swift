@@ -10,12 +10,13 @@ import SwiftyJSON
 
 public class User: NSObject {
 
-    public var id: Double?
+    
     public var rank: Int?
     public var categoryLocation: String?
     public var categoryLanguage: String?
+    
+    public var id: Double?
     public var login: String?
-    public var userId: Int?
     public var avatar_url: String?
     public var gravatar_id: Int?
     public var url: String?
@@ -63,10 +64,6 @@ public class User: NSObject {
         
         if let login = json["login"].string {
             self.login = login
-        }
-        
-        if let userId = json["userId"].int {
-            self.userId = userId
         }
         
         if let avatar_url = json["avatar_url"].string {

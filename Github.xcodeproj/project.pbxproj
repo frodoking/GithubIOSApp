@@ -13,7 +13,6 @@
 		7E5C907F1BD732DE00DA1D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C907E1BD732DE00DA1D78 /* Images.xcassets */; };
 		7E5C90841BD75B6C00DA1D78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C90821BD75B6C00DA1D78 /* LaunchScreen.storyboard */; };
 		7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */; };
-		7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */; };
 		7E5C908C1BD77F2C00DA1D78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C908B1BD77F2C00DA1D78 /* User.swift */; };
 		7E5C90EE1BD791F700DA1D78 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90E51BD791DF00DA1D78 /* Alamofire.framework */; };
 		7E5C90EF1BD791F700DA1D78 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5C90E51BD791DF00DA1D78 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,6 +31,7 @@
 		7E9CBA941BDB34F6005EBFC0 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA931BDB34F6005EBFC0 /* Key.swift */; };
 		7E9CBA9A1BDC9D51005EBFC0 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA991BDC9D51005EBFC0 /* UserDetailViewController.swift */; };
 		7E9CBAA01BDCAA26005EBFC0 /* ViewPagerIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA9F1BDCAA26005EBFC0 /* ViewPagerIndicator.swift */; };
+		7E9CBAAA1BDDFAB8005EBFC0 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBAA81BDDFAB8005EBFC0 /* RankTableViewCell.swift */; };
 		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; };
 		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; };
 		7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */; };
@@ -149,7 +149,6 @@
 		7E5C907E1BD732DE00DA1D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7E5C90831BD75B6C00DA1D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E5C90851BD7760A00DA1D78 /* UserRankTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRankTableViewController.swift; sourceTree = "<group>"; };
-		7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
 		7E5C908B1BD77F2C00DA1D78 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E5C90CA1BD791D100DA1D78 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../../github_opensource/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		7E5C90DC1BD791DF00DA1D78 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../github_opensource/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		7E9CBA991BDC9D51005EBFC0 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDetailViewController.swift; path = Core/Module/Users/UserDetailViewController.swift; sourceTree = "<group>"; };
 		7E9CBA9E1BDCAA25005EBFC0 /* ViewPagerIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerIndicator.h; sourceTree = "<group>"; };
 		7E9CBA9F1BDCAA26005EBFC0 /* ViewPagerIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerIndicator.swift; sourceTree = "<group>"; };
+		7E9CBAA81BDDFAB8005EBFC0 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankTableViewCell.swift; path = Core/Common/Views/RankTableViewCell.swift; sourceTree = "<group>"; };
 		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = Core/Common/CityTableViewController.swift; sourceTree = "<group>"; };
@@ -312,8 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				7E9CBAA11BDCAA48005EBFC0 /* ViewPagerIndicator */,
-				7E5C90871BD77BB700DA1D78 /* RankTableViewCell.swift */,
 				7E9776B11BDA1399001E1904 /* RepositoriesTableViewCell.swift */,
+				7E9CBAA81BDDFAB8005EBFC0 /* RankTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -582,8 +582,8 @@
 				7E9CBA8E1BDB25F2005EBFC0 /* MoreTableViewController.swift in Sources */,
 				7E9CBA9A1BDC9D51005EBFC0 /* UserDetailViewController.swift in Sources */,
 				7E9CBAA01BDCAA26005EBFC0 /* ViewPagerIndicator.swift in Sources */,
-				7E5C90881BD77BB700DA1D78 /* RankTableViewCell.swift in Sources */,
 				7E8343EB1BDA19690019AC21 /* Theme.swift in Sources */,
+				7E9CBAAA1BDDFAB8005EBFC0 /* RankTableViewCell.swift in Sources */,
 				7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */,
 				7E8343F51BDA1F6B0019AC21 /* Repository.swift in Sources */,
 				7E9CBA941BDB34F6005EBFC0 /* Key.swift in Sources */,
