@@ -31,7 +31,7 @@ class RepositoriesTableViewCell: UITableViewCell {
         if let repository = self.repository {
             rankLabel.text = "\(repository.id!)"
             repositoryLabel.text = repository.name!
-            userLabel.text = "Owner: \(repository.owner?.login!)"
+            userLabel.text = "Owner: \(repository.owner!.login!)"
             
             descriptionLabel.text = repository.repositoryDescription!
             starLabel.text = "Star: \(repository.stargazers_count!)"

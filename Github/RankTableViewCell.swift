@@ -23,15 +23,10 @@ class RankTableViewCell: UITableViewCell {
     }
     
     private func updateUi() {
-        rankLabel?.text = nil
-        titleImageView?.image = nil
-        mainLabel?.text = nil
-        detailLabel?.text = nil
-        
         if let user = self.user {
             rankLabel.text = "\(user.rank!)"
             mainLabel.text = user.login!
-            detailLabel.text = user.description
+            detailLabel.text = user.url!
         }
         
         Alamofire.request(.GET, (user?.avatar_url)!)

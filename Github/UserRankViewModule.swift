@@ -14,8 +14,8 @@ public class UserRankViewModule {
     var language: NSString?
     var dataSource = DataSource()
     
-    public func loadDataFromApiWithIsFirst(isFirst: Bool,  currentIndex:Int, handler: (users: NSArray) -> Void) {
-        if (currentIndex==1) {
+    public func loadDataFromApiWithIsFirst(isFirst: Bool,  currentTab:Int, handler: (users: NSArray) -> Void) {
+        if (currentTab==1) {
             
             var page:Int = 0
             

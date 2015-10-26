@@ -18,6 +18,8 @@ public struct Key {
     
     public struct CellReuseIdentifier {
         static let RankCell = "RankCell"
+        static let UserRankDetailCell = "UserRankDetailCell"
+        
         static let DiscoveryCell = "DiscoveryCell"
         static let RepositoriesCell = "RepositoriesCell"
         static let MoreCell = "MoreCell"
