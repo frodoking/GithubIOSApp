@@ -25,6 +25,7 @@ class CountyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets=false
         self.view.backgroundColor = UIColor.whiteColor()
         self.title = "County"

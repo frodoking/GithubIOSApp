@@ -39,7 +39,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Country" id="PSv-I5-cXi">
-                        <barButtonItem key="leftBarButtonItem" title="返回" id="Ehf-EP-6xv">
+                        <barButtonItem key="leftBarButtonItem" tag="1" title="返回" id="Ehf-EP-6xv">
                             <connections>
                                 <action selector="backAction:" destination="TNT-f0-Iaj" id="dA9-mP-BZy"/>
                             </connections>
@@ -656,6 +656,6 @@
         <image name="more" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3aM-Ig-V50"/>
+        <segue reference="GAi-u8-CgT"/>
     </inferredMetricsTieBreakers>
 </document>
