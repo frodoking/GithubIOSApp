@@ -32,6 +32,7 @@
 		7E9CBA9A1BDC9D51005EBFC0 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA991BDC9D51005EBFC0 /* UserDetailViewController.swift */; };
 		7E9CBAA01BDCAA26005EBFC0 /* ViewPagerIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA9F1BDCAA26005EBFC0 /* ViewPagerIndicator.swift */; };
 		7E9CBAAA1BDDFAB8005EBFC0 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBAA81BDDFAB8005EBFC0 /* RankTableViewCell.swift */; };
+		7ECE8EC11BDF03F4003D0078 /* UserDetailViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECE8EC01BDF03F4003D0078 /* UserDetailViewModule.swift */; };
 		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; };
 		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; };
 		7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */; };
@@ -167,6 +168,7 @@
 		7E9CBA9E1BDCAA25005EBFC0 /* ViewPagerIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerIndicator.h; sourceTree = "<group>"; };
 		7E9CBA9F1BDCAA26005EBFC0 /* ViewPagerIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerIndicator.swift; sourceTree = "<group>"; };
 		7E9CBAA81BDDFAB8005EBFC0 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankTableViewCell.swift; path = Core/Common/Views/RankTableViewCell.swift; sourceTree = "<group>"; };
+		7ECE8EC01BDF03F4003D0078 /* UserDetailViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDetailViewModule.swift; path = Core/Module/Users/UserDetailViewModule.swift; sourceTree = "<group>"; };
 		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFD01BD8C63800D576A9 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = Core/Common/CityTableViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				7E9776A91BD9D72B001E1904 /* UserRankViewModule.swift */,
+				7ECE8EC01BDF03F4003D0078 /* UserDetailViewModule.swift */,
 			);
 			name = ViewModule;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				7E9CBAAA1BDDFAB8005EBFC0 /* RankTableViewCell.swift in Sources */,
 				7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */,
 				7E8343F51BDA1F6B0019AC21 /* Repository.swift in Sources */,
+				7ECE8EC11BDF03F4003D0078 /* UserDetailViewModule.swift in Sources */,
 				7E9CBA941BDB34F6005EBFC0 /* Key.swift in Sources */,
 				7E5C90861BD7760A00DA1D78 /* UserRankTableViewController.swift in Sources */,
 				7EEDBFD11BD8C63800D576A9 /* CityTableViewController.swift in Sources */,

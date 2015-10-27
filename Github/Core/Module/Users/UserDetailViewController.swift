@@ -24,6 +24,14 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    var viewModule: UserDetailViewModule?
+    var array: NSArray? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var user: User? {
         didSet {
             self.title = user?.login
@@ -76,7 +84,9 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         
         updateUserInfo()
         
-        viewPagerIndicator.titles = ["Apple","Banana","Cherry","Durin"]
+        viewModule = UserDetailViewModule()
+        
+        viewPagerIndicator.titles = UserDetailViewModule.Indicator
         //监听ViewPagerIndicator选中项变化
         viewPagerIndicator.delegate = self
         
@@ -100,7 +110,12 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
 extension UserDetailViewController {
     // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
-        
+        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: indicatorIndex, userName: (user?.login)!,
+            handler: { array in
+                if array.count > 0 {
+                    self.array = array
+                }
+        })
     }
 }
 
@@ -108,20 +123,22 @@ extension UserDetailViewController {
 extension UserDetailViewController {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return self.array!.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserRankDetailCell, forIndexPath: indexPath)
         
-        // Configure the cell...
-        // cell.user = self.users[indexPath.section]
+//        if cell == nil {
+//            let repositoriesCell = cell as! RankTableViewCell
+//            repositoriesCell.user = self.array[indexPath.section]
+//        }
         
         
         return cell
