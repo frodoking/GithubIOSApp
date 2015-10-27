@@ -17,11 +17,11 @@ public struct Key {
     }
     
     public struct CellReuseIdentifier {
-        static let RankCell = "RankCell"
-        static let UserRankDetailCell = "UserRankDetailCell"
+        static let UserCell = "UserCell"
+        static let UserDetailCell = "UserDetailCell"
         
         static let DiscoveryCell = "DiscoveryCell"
-        static let RepositoriesCell = "RepositoriesCell"
+        static let RepositoryCell = "RepositoryCell"
         static let MoreCell = "MoreCell"
         
         static let LanguageCell = "LanguageCell"

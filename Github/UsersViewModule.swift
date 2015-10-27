@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public class UserRankViewModule {
+public class UsersViewModule {
     var language: NSString?
     var dataSource = DataSource()
     

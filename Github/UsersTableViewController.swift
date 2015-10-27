@@ -8,9 +8,9 @@
 
 import UIKit
 
-class UserRankTableViewController: UITableViewController {
+class UsersTableViewController: UITableViewController {
     
-    var viewModule: UserRankViewModule?
+    var viewModule: UsersViewModule?
     var tab: Int = 1
     
     var users = [User]()
@@ -21,7 +21,7 @@ class UserRankTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
-        viewModule = UserRankViewModule()
+        viewModule = UsersViewModule()
         
         refresh()
     } 
@@ -51,7 +51,7 @@ class UserRankTableViewController: UITableViewController {
 }
 
 // MARK: - Table view data source
-extension UserRankTableViewController {
+extension UsersTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.users.count
@@ -63,7 +63,7 @@ extension UserRankTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.RankCell, forIndexPath: indexPath) as! RankTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
         
         
         cell.user = self.users[indexPath.section]
@@ -72,12 +72,12 @@ extension UserRankTableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return Theme.RankTableViewCellHeight
+        return Theme.UserTableViewCellHeight
     }
 }
 
 // MARK: - Table view data delegate
-extension UserRankTableViewController {
+extension UsersTableViewController {
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -115,7 +115,7 @@ extension UserRankTableViewController {
 }
 
 // MARK: - Navigation
-extension UserRankTableViewController {
+extension UsersTableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -129,7 +129,7 @@ extension UserRankTableViewController {
             navigationController = viewController as? UINavigationController,
             detailViewController = navigationController.topViewController as? UserDetailViewController
         {
-            if let cell = sender as? RankTableViewCell {
+            if let cell = sender as? UserTableViewCell {
                 let selectedIndex = tableView.indexPathForCell(cell)?.section
                 if let index = selectedIndex {
                     detailViewController.user = users[index]

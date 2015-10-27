@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RankTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell {
 
     var rankLabel: UILabel!
     var titleImageView: UIImageView!

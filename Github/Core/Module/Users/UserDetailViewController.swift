@@ -26,6 +26,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     
     
     var viewModule: UserDetailViewModule?
+    var tabIndex: Int = 0
     var array: NSArray? {
         didSet {
             self.tableView.reloadData()
@@ -110,6 +111,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
 extension UserDetailViewController {
     // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
+        self.tabIndex = indicatorIndex
         viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: indicatorIndex, userName: (user?.login)!,
             handler: { array in
                 if array.count > 0 {
@@ -133,15 +135,15 @@ extension UserDetailViewController {
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserRankDetailCell, forIndexPath: indexPath)
-        
-//        if cell == nil {
-//            let repositoriesCell = cell as! RankTableViewCell
-//            repositoriesCell.user = self.array[indexPath.section]
-//        }
-        
-        
-        return cell
+        if tabIndex == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserDetailCell, forIndexPath: indexPath) as! RepositoryTableViewCell
+            cell.repository = self.array![indexPath.section] as? Repository
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserDetailCell, forIndexPath: indexPath) as! UserTableViewCell
+            cell.user = self.array![indexPath.section] as? User
+            return cell
+        }
     }
 }
 

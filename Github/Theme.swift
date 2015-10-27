@@ -14,6 +14,6 @@ public struct Theme {
     static let GrayColor = UIColor(red: 0.80, green:0.80, blue:0.80, alpha:1.00)
     static let GrayTextColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1.00)
     
-    static let RepositoriesTableViewCellheight: CGFloat = 95
-    static let RankTableViewCellHeight: CGFloat = 71
+    static let RepositoryTableViewCellheight: CGFloat = 95
+    static let UserTableViewCellHeight: CGFloat = 71
 }
