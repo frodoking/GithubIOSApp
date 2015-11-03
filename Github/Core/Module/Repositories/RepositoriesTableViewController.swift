@@ -18,10 +18,10 @@ class RepositoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
-        
+        self.navigationController?.navigationBar.backgroundColor = Theme.Color
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        self.navigationController?.navigationBar.backgroundColor = Theme.Color
+        
         
         viewModule = RepositoriesViewModule()
         // Uncomment the following line to preserve selection between presentations

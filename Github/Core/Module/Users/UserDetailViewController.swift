@@ -24,6 +24,12 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
     @IBOutlet weak var tableView: UITableView!
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+    }()
+    
     
     var viewModule: UserDetailViewModule?
     var tabIndex: Int = 0
@@ -82,6 +88,8 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
         updateUserInfo()
         
@@ -97,13 +105,28 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         viewPagerIndicator.showBottomLine = true //基线是否显示
         viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
         viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
- 
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-        self.navigationController?.navigationBar.backgroundColor = Theme.Color
+        
+        self.tableView.addSubview(self.refreshControl)
+        
+        self.tableView.estimatedRowHeight = tableView.rowHeight
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        viewPagerIndicator.setSelectedIndex(tabIndex)
+    }
     
-
-        // Do any additional setup after loading the view.
+    func refreshAction(sender: UIRefreshControl) {
+        self.refreshControl.beginRefreshing()
+        
+        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
+            handler: { array in
+                self.refreshControl.endRefreshing()
+                
+                if array.count > 0 {
+                    self.array = array
+                }
+        })
     }
 }
 
@@ -112,12 +135,20 @@ extension UserDetailViewController {
     // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
         self.tabIndex = indicatorIndex
-        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: indicatorIndex, userName: (user?.login)!,
-            handler: { array in
-                if array.count > 0 {
-                    self.array = array
-                }
-        })
+        switch indicatorIndex {
+            case 0:
+                self.array = viewModule!.userRepositoriesDataSource.dsArray
+                break
+            case 1:
+                self.array = viewModule!.userRepositoriesDataSource.dsArray
+                break
+            case 2:
+                self.array = viewModule!.userRepositoriesDataSource.dsArray
+                break
+            default:break
+        }
+        
+        self.refreshAction(self.refreshControl)
     }
 }
 
@@ -125,6 +156,9 @@ extension UserDetailViewController {
 extension UserDetailViewController {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        if array == nil {
+            return 0
+        }
         return self.array!.count
     }
     
@@ -136,14 +170,21 @@ extension UserDetailViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tabIndex == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserDetailCell, forIndexPath: indexPath) as! RepositoryTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.RepositoryCell, forIndexPath: indexPath) as! RepositoryTableViewCell
             cell.repository = self.array![indexPath.section] as? Repository
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserDetailCell, forIndexPath: indexPath) as! UserTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
             cell.user = self.array![indexPath.section] as? User
             return cell
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if tabIndex == 0 {
+            return Theme.RepositoryTableViewCellheight
+        }
+        return Theme.UserTableViewCellHeight
     }
 }
 

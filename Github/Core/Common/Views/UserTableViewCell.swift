@@ -78,13 +78,13 @@ class UserTableViewCell: UITableViewCell {
             rankLabel.text = "\(user.rank!)"
             mainLabel.text = user.login!
             detailLabel.text = user.url!
-        }
-        
-        Alamofire.request(.GET, (user?.avatar_url)!)
-            .responseData { response in
-                NSLog("Fetch: Image: \(self.user!.avatar_url)")
-                let imageData = UIImage(data: response.data!)
-                self.titleImageView?.image = imageData
+            
+            Alamofire.request(.GET, (user.avatar_url)!)
+                .responseData { response in
+                    NSLog("Fetch: Image: \(self.user!.avatar_url)")
+                    let imageData = UIImage(data: response.data!)
+                    self.titleImageView?.image = imageData
+            }
         }
     }
 }
