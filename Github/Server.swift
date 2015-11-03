@@ -137,6 +137,7 @@ public class Server: NSObject {
                                 repository.parseJson(item)
                                 print(repository.description)
                                 repositories.append(repository)
+                                NSLog("==>> repository \(repository) <<== ")
                             }
                             
                             completoinHandler(repositories: repositories, page: page)
@@ -172,8 +173,10 @@ public class Server: NSObject {
                                 
                                 let user = User()
                                 user.parseJson(item)
+                                user.rank = (i+1)
                                 print(user.description)
                                 users.append(user)
+                                NSLog("==>> user \(user) <<== ")
                             }
                             
                             completoinHandler(users: users, page: page)
@@ -209,8 +212,10 @@ public class Server: NSObject {
                                 
                                 let user = User()
                                 user.parseJson(item)
+                                user.rank = (i+1)
                                 print(user.description)
                                 users.append(user)
+                                NSLog("==>> user \(user) <<== ")
                             }
                             
                             completoinHandler(users: users, page: page)
