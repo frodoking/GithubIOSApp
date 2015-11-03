@@ -28,6 +28,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets=false
         self.view.backgroundColor = Theme.WhiteColor

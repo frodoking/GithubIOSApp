@@ -88,6 +88,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets=false
         self.view.backgroundColor = Theme.WhiteColor

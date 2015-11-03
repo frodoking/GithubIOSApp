@@ -197,70 +197,92 @@
                                 <state key="normal" title="Blog"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-9y-6cR" customClass="ViewPagerIndicator" customModule="Github" customModuleProvider="target">
-                                <rect key="frame" x="20" y="189" width="560" height="51"/>
+                                <rect key="frame" x="0.0" y="189" width="600" height="40"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="3hM-9U-fXK"/>
+                                    <constraint firstAttribute="height" constant="40" id="J0U-YD-aJV"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e6Y-ao-bpD">
-                                <rect key="frame" x="20" y="248" width="560" height="344"/>
+                                <rect key="frame" x="0.0" y="237" width="600" height="363"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="qtM-Y6-3MN"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="0y5-LY-ePG" customClass="UserTableViewCell" customModule="Github" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0y5-LY-ePG" id="U0Z-al-Yu8">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" id="65H-ZE-xdC" customClass="RepositoryTableViewCell" customModule="Github" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="65H-ZE-xdC" id="VDo-7a-fXk">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qtM-Y6-3MN"/>
+                                    </mask>
+                                </variation>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Aeu-fk-VOi" firstAttribute="leading" secondItem="hNX-DU-Dbs" secondAttribute="leading" id="3Zk-k5-nNG"/>
+                            <constraint firstAttribute="bottom" secondItem="mKe-9y-6cR" secondAttribute="bottom" constant="371" id="7ah-Yv-kum"/>
+                            <constraint firstItem="mKe-9y-6cR" firstAttribute="leading" secondItem="DPM-hI-gzL" secondAttribute="leading" id="DJe-c0-ZS3"/>
                             <constraint firstItem="GE2-FL-5aA" firstAttribute="top" secondItem="nIA-jc-cHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Dwv-cn-gVJ"/>
+                            <constraint firstItem="e6Y-ao-bpD" firstAttribute="trailing" secondItem="mKe-9y-6cR" secondAttribute="trailing" id="Ef5-iB-D2H"/>
                             <constraint firstAttribute="leadingMargin" secondItem="GE2-FL-5aA" secondAttribute="leading" id="Fcc-Mh-M6O"/>
+                            <constraint firstItem="mKe-9y-6cR" firstAttribute="leading" secondItem="e6Y-ao-bpD" secondAttribute="leading" id="Gz1-PZ-cIs"/>
                             <constraint firstItem="vJ7-yC-NTS" firstAttribute="leading" secondItem="HAM-Ln-Ykb" secondAttribute="leading" id="Hkf-wv-02f"/>
                             <constraint firstItem="Dgz-fJ-CE3" firstAttribute="leading" secondItem="GE2-FL-5aA" secondAttribute="trailing" constant="8" symbolic="YES" id="K0b-aV-U3r"/>
                             <constraint firstItem="gL5-P0-5Ve" firstAttribute="leading" secondItem="Dgz-fJ-CE3" secondAttribute="trailing" id="NIL-ka-WJ1"/>
-                            <constraint firstItem="mKe-9y-6cR" firstAttribute="top" secondItem="Aeu-fk-VOi" secondAttribute="bottom" constant="8" symbolic="YES" id="RHi-F1-Ba8"/>
+                            <constraint firstItem="mKe-9y-6cR" firstAttribute="trailing" secondItem="e6Y-ao-bpD" secondAttribute="trailing" id="Sbk-Rz-3hk"/>
+                            <constraint firstAttribute="trailing" secondItem="mKe-9y-6cR" secondAttribute="trailing" id="TJl-HW-zJE"/>
                             <constraint firstItem="vJ7-yC-NTS" firstAttribute="leading" secondItem="hNX-DU-Dbs" secondAttribute="trailing" id="Ufd-jm-LbM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HAM-Ln-Ykb" secondAttribute="trailing" id="bWZ-iN-PjX"/>
+                            <constraint firstItem="e6Y-ao-bpD" firstAttribute="top" secondItem="mKe-9y-6cR" secondAttribute="bottom" constant="8" symbolic="YES" id="cII-kK-tZy"/>
                             <constraint firstItem="Dgz-fJ-CE3" firstAttribute="top" secondItem="nIA-jc-cHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="ddB-sm-fwf"/>
+                            <constraint firstItem="mKe-9y-6cR" firstAttribute="top" secondItem="Aeu-fk-VOi" secondAttribute="bottom" constant="8" symbolic="YES" id="eWi-TK-HRN"/>
                             <constraint firstItem="CKI-xH-iSW" firstAttribute="top" secondItem="Dgz-fJ-CE3" secondAttribute="bottom" constant="8" symbolic="YES" id="ejQ-Ae-BNE"/>
                             <constraint firstItem="HAM-Ln-Ykb" firstAttribute="leading" secondItem="gL5-P0-5Ve" secondAttribute="leading" id="ewX-AK-Azi"/>
-                            <constraint firstItem="nVC-s3-z9k" firstAttribute="top" secondItem="e6Y-ao-bpD" secondAttribute="bottom" constant="8" symbolic="YES" id="fGQ-2a-eZZ"/>
                             <constraint firstItem="hNX-DU-Dbs" firstAttribute="top" secondItem="CKI-xH-iSW" secondAttribute="bottom" constant="8" symbolic="YES" id="fic-LQ-RUT"/>
-                            <constraint firstItem="e6Y-ao-bpD" firstAttribute="top" secondItem="mKe-9y-6cR" secondAttribute="bottom" constant="8" symbolic="YES" id="kYb-5q-2CT"/>
                             <constraint firstItem="HAM-Ln-Ykb" firstAttribute="top" secondItem="gL5-P0-5Ve" secondAttribute="bottom" constant="8" symbolic="YES" id="li4-8n-fzW"/>
                             <constraint firstItem="vJ7-yC-NTS" firstAttribute="top" secondItem="HAM-Ln-Ykb" secondAttribute="bottom" constant="8" symbolic="YES" id="lrB-Zv-gXa"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="e6Y-ao-bpD" secondAttribute="leading" id="mST-Zq-LzW"/>
                             <constraint firstItem="Aeu-fk-VOi" firstAttribute="top" secondItem="hNX-DU-Dbs" secondAttribute="bottom" constant="8" symbolic="YES" id="mWW-MW-YIr"/>
                             <constraint firstItem="gL5-P0-5Ve" firstAttribute="top" secondItem="nIA-jc-cHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="nbI-sx-fZw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e6Y-ao-bpD" secondAttribute="trailing" id="rNT-Nn-Vja"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mKe-9y-6cR" secondAttribute="trailing" id="uFr-kv-5e4"/>
+                            <constraint firstAttribute="bottom" secondItem="mKe-9y-6cR" secondAttribute="bottom" constant="360" id="ox2-KU-iBz"/>
+                            <constraint firstAttribute="bottom" secondItem="mKe-9y-6cR" secondAttribute="bottom" constant="371" id="rc0-nn-5Qx"/>
+                            <constraint firstItem="e6Y-ao-bpD" firstAttribute="leading" secondItem="mKe-9y-6cR" secondAttribute="leading" id="uQN-Oj-IIE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gL5-P0-5Ve" secondAttribute="trailing" id="vhB-Sa-kQQ"/>
                             <constraint firstItem="HAM-Ln-Ykb" firstAttribute="leading" secondItem="CKI-xH-iSW" secondAttribute="trailing" id="vuQ-fk-fxv"/>
+                            <constraint firstItem="e6Y-ao-bpD" firstAttribute="bottom" secondItem="nVC-s3-z9k" secondAttribute="top" id="x5J-H0-tMR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vJ7-yC-NTS" secondAttribute="trailing" id="yIi-wB-56G"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="mKe-9y-6cR" secondAttribute="leading" id="zsJ-G7-9Qi"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7ah-Yv-kum"/>
+                                <exclude reference="ox2-KU-iBz"/>
+                                <exclude reference="rc0-nn-5Qx"/>
+                                <exclude reference="Ef5-iB-D2H"/>
+                                <exclude reference="uQN-Oj-IIE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Name" id="YdW-Sb-zW3">
                         <barButtonItem key="leftBarButtonItem" title="返回" id="pRW-fn-xUH">

@@ -76,7 +76,7 @@ public class UserDetailViewModule {
                     page = userFollowersDataSource.page!+1;
                 }
                 
-                Server.shareInstance.userFollowingWithPage(page, userName: userName,
+                Server.shareInstance.userFollowersWithPage(page, userName: userName,
                     completoinHandler: { (users, page) in
                         if (page <= 1) {
                             self.userFollowersDataSource.reset()
