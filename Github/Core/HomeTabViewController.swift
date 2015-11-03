@@ -14,7 +14,9 @@ class HomeTabViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tabBar.backgroundColor = UIColor.grayColor()
-        self.tabBar.tintColor = UIColor.grayColor()
+        // 默认背景颜色
+        self.tabBar.barTintColor = Theme.GrayColor
+        // 点击后的颜色
+        self.tabBar.tintColor = Theme.Color
     } 
 }

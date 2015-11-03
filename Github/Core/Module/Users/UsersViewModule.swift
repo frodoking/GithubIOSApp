@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 public class UsersViewModule {
+     static let Indicator: NSMutableArray = ["City", "Country", "World"]
     var language: NSString?
     var dataSource = DataSource()
     

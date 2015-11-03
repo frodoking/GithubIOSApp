@@ -89,6 +89,9 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
+        self.automaticallyAdjustsScrollViewInsets=false
+        self.view.backgroundColor = Theme.WhiteColor
+        
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
         updateUserInfo()

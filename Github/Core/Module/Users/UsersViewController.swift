@@ -8,33 +8,61 @@
 
 import UIKit
 
-class UsersTableViewController: UITableViewController {
+class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
+    @IBOutlet weak var totalCountLabel: UILabel!
+     @IBOutlet weak var tableView: UITableView!
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshAction:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+    }()
+    
     
     var viewModule: UsersViewModule?
-    var tab: Int = 1
+     var tabIndex: Int = 1
     
     var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
+        self.automaticallyAdjustsScrollViewInsets=false
+        self.view.backgroundColor = Theme.WhiteColor
+        
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
         viewModule = UsersViewModule()
         
-        refresh()
-    } 
-    
-    @IBAction func refreshAction(sender: UIRefreshControl) {
-        refresh()
+        viewPagerIndicator.titles = UsersViewModule.Indicator
+        //监听ViewPagerIndicator选中项变化
+        viewPagerIndicator.delegate = self
+        
+        viewPagerIndicator.setTitleColorForState(Theme.Color, state: UIControlState.Selected) //选中文字的颜色
+        viewPagerIndicator.setTitleColorForState(UIColor.blackColor(), state: UIControlState.Normal) //正常文字颜色
+        viewPagerIndicator.tintColor = Theme.Color //指示器和基线的颜色
+        viewPagerIndicator.showBottomLine = true //基线是否显示
+        viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
+        viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
+        
+        self.tableView.addSubview(self.refreshControl)
+        
+        self.tableView.estimatedRowHeight = tableView.rowHeight
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        viewPagerIndicator.setSelectedIndex(tabIndex)
     }
     
-    private func refresh() {
-        refreshControl?.beginRefreshing()
-        viewModule!.loadDataFromApiWithIsFirst(true, currentTab: tab) { users in
-            self.refreshControl?.endRefreshing()
+    func refreshAction(sender: UIRefreshControl) {
+        refreshControl.beginRefreshing()
+        viewModule!.loadDataFromApiWithIsFirst(true, currentTab: tabIndex) { users in
+            self.refreshControl.endRefreshing()
             if users.count > 0 {
                 self.users = users as! [User]
                 self.tableView.reloadData()
@@ -51,19 +79,38 @@ class UsersTableViewController: UITableViewController {
     }
 }
 
+// MARK: - ViewPagerIndicator
+extension UsersViewController {
+    // 点击顶部选中后回调
+    func indicatorChange(indicatorIndex: Int) {
+        self.tabIndex = indicatorIndex
+        switch indicatorIndex {
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            break
+        default:break
+        }
+        
+        self.refreshAction(self.refreshControl)
+    }
+}
+
 // MARK: - Table view data source
-extension UsersTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+extension UsersViewController {
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.users.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
         
         
@@ -72,13 +119,13 @@ extension UsersTableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return Theme.UserTableViewCellHeight
     }
 }
 
 // MARK: - Table view data delegate
-extension UsersTableViewController {
+extension UsersViewController {
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -116,7 +163,7 @@ extension UsersTableViewController {
 }
 
 // MARK: - Navigation
-extension UsersTableViewController {
+extension UsersViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

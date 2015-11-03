@@ -53,6 +53,7 @@ class UserTableViewCell: UITableViewCell {
         self.contentView.addSubview(mainLabel)
         
         detailLabel=UILabel.init(frame: CGRectMake(preWidth+rankWidth+sufRankWidth+imageViewWidth+sufImageViewWidth, (h-imageViewWidth)/2+imageViewWidth/2, labelWidth, imageViewWidth/2))
+        detailLabel.numberOfLines = 0
         self.contentView.addSubview(detailLabel)
         
         mainLabel.numberOfLines = 0
