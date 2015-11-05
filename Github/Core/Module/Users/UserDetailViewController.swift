@@ -109,6 +109,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         viewPagerIndicator.showBottomLine = true //基线是否显示
         viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
         viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
+        viewPagerIndicator.titleFont = UIFont.systemFontOfSize(14)
         
         self.tableView.addSubview(self.refreshControl)
         

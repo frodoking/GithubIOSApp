@@ -46,9 +46,10 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         viewPagerIndicator.setTitleColorForState(Theme.Color, state: UIControlState.Selected) //选中文字的颜色
         viewPagerIndicator.setTitleColorForState(UIColor.blackColor(), state: UIControlState.Normal) //正常文字颜色
         viewPagerIndicator.tintColor = Theme.Color //指示器和基线的颜色
-        viewPagerIndicator.showBottomLine = true //基线是否显示
+        viewPagerIndicator.showBottomLine = false //基线是否显示
         viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
         viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
+        viewPagerIndicator.titleFont = UIFont.systemFontOfSize(14)
         
         self.tableView.addSubview(self.refreshControl)
         
@@ -72,11 +73,11 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     }
 
     @IBAction func cityAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("country", sender: self)
+        self.performSegueWithIdentifier(Key.SegueIdentifier.Country, sender: self)
     }
 
     @IBAction func languageAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("language", sender: self)
+        self.performSegueWithIdentifier(Key.SegueIdentifier.Language, sender: self)
     }
 }
 

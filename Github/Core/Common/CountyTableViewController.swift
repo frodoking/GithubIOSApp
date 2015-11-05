@@ -102,7 +102,7 @@ class CountyTableViewController: UITableViewController {
             cityArray = ["Tokyo","Moscow","Singapore","Seoul"];
         }
         
-        self.performSegueWithIdentifier("city", sender: self)
+        self.performSegueWithIdentifier(Key.SegueIdentifier.City, sender: self)
 
     }
 

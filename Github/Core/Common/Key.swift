@@ -13,7 +13,10 @@ public struct Key {
         static let CurrentLogin = "currentLogin"
         static let CurrentAvatarUrl = "currentAvatarUrl"
     }
-    public struct Language {
+    public struct SegueIdentifier {
+        static let Country = "Country"
+        static let City = "City"
+        static let Language = "Language"
     }
     
     public struct CellReuseIdentifier {

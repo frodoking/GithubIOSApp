@@ -50,7 +50,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="V7g-lF-02q" kind="presentation" identifier="city" id="wQf-vU-XtQ"/>
+                        <segue destination="V7g-lF-02q" kind="presentation" identifier="City" id="wQf-vU-XtQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cv-Of-i21" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -659,11 +659,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9B-bM-0tx" customClass="ViewPagerIndicator" customModule="Github" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="520" height="30"/>
+                                <rect key="frame" x="0.0" y="64" width="500" height="35"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="XQn-JF-dqa"/>
+                                </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tUa-MT-ozb">
-                                <rect key="frame" x="0.0" y="95" width="600" height="456"/>
+                                <rect key="frame" x="0.0" y="107" width="600" height="444"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -683,16 +686,22 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-qn-eA3">
-                                <rect key="frame" x="520" y="64" width="80" height="30"/>
+                                <rect key="frame" x="500" y="67" width="100" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GdC-7Q-Euq"/>
-                                    <constraint firstAttribute="width" constant="80" id="wsY-8Q-sYs"/>
+                                    <constraint firstAttribute="height" constant="30" id="8iw-Mr-0lm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="eV5-d3-IQE"/>
+                                    <constraint firstAttribute="width" constant="100" id="lEX-Tq-Qqy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eV5-d3-IQE"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <animations/>
@@ -700,27 +709,48 @@
                         <constraints>
                             <constraint firstItem="tUa-MT-ozb" firstAttribute="trailing" secondItem="fFw-qn-eA3" secondAttribute="trailing" id="397-HH-KfJ"/>
                             <constraint firstAttribute="trailing" secondItem="tUa-MT-ozb" secondAttribute="trailing" id="3yc-Jk-gZe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fFw-qn-eA3" secondAttribute="trailing" constant="-20" id="ArB-5q-sob"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fFw-qn-eA3" secondAttribute="trailing" constant="-20" id="Dkf-zy-cLH"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="top" secondItem="2b7-H4-P7k" secondAttribute="bottom" constant="30" id="GeK-Gn-Q9r"/>
                             <constraint firstItem="z9B-bM-0tx" firstAttribute="top" secondItem="2b7-H4-P7k" secondAttribute="bottom" id="HJg-Bq-wJL"/>
-                            <constraint firstItem="tUa-MT-ozb" firstAttribute="bottom" secondItem="opi-h1-WP2" secondAttribute="top" id="NuD-Dw-76h"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="leading" secondItem="z9B-bM-0tx" secondAttribute="leading" id="IE8-Jc-jBT"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="bottom" constant="8" symbolic="YES" id="OEy-VY-4Ik"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="trailing" secondItem="fFw-qn-eA3" secondAttribute="trailing" id="QTy-ys-cnz"/>
                             <constraint firstItem="z9B-bM-0tx" firstAttribute="bottom" secondItem="fFw-qn-eA3" secondAttribute="bottom" id="Snr-fn-9Np"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="leading" secondItem="eg6-ll-DTU" secondAttribute="leadingMargin" id="TEa-1h-4GI"/>
                             <constraint firstItem="fFw-qn-eA3" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="top" id="Y9v-gi-d9g"/>
+                            <constraint firstItem="fFw-qn-eA3" firstAttribute="centerY" secondItem="z9B-bM-0tx" secondAttribute="centerY" id="dSh-3X-wwB"/>
                             <constraint firstItem="z9B-bM-0tx" firstAttribute="leading" secondItem="eg6-ll-DTU" secondAttribute="leading" id="ddx-Qh-fm5"/>
-                            <constraint firstItem="tUa-MT-ozb" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="bottom" constant="1" id="g4B-B9-5mr"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="bottom" constant="8" symbolic="YES" id="g4B-B9-5mr"/>
+                            <constraint firstItem="tUa-MT-ozb" firstAttribute="bottom" secondItem="opi-h1-WP2" secondAttribute="top" id="n0i-bm-2FD"/>
+                            <constraint firstItem="fFw-qn-eA3" firstAttribute="leading" secondItem="z9B-bM-0tx" secondAttribute="trailing" id="oSh-Cl-C1J"/>
                             <constraint firstItem="tUa-MT-ozb" firstAttribute="leading" secondItem="z9B-bM-0tx" secondAttribute="leading" id="qmG-M3-ZbV"/>
-                            <constraint firstItem="fFw-qn-eA3" firstAttribute="leading" secondItem="z9B-bM-0tx" secondAttribute="trailing" id="rg6-qf-ZMk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Snr-fn-9Np"/>
+                                <exclude reference="397-HH-KfJ"/>
+                                <exclude reference="3yc-Jk-gZe"/>
+                                <exclude reference="GeK-Gn-Q9r"/>
+                                <exclude reference="TEa-1h-4GI"/>
+                                <exclude reference="g4B-B9-5mr"/>
+                                <exclude reference="qmG-M3-ZbV"/>
+                                <exclude reference="Dkf-zy-cLH"/>
+                                <exclude reference="Y9v-gi-d9g"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Java" id="Eop-yb-Q70">
                         <barButtonItem key="leftBarButtonItem" title="城市" id="kSQ-ZA-wvW">
                             <connections>
                                 <action selector="cityAction:" destination="C2K-YA-WGI" id="Joh-0A-3J6"/>
-                                <segue destination="WmG-E7-EJo" kind="presentation" id="MTQ-T5-Xca"/>
+                                <segue destination="WmG-E7-EJo" kind="presentation" identifier="Country" id="MTQ-T5-Xca"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="语言" id="wFM-0Y-glr">
                             <connections>
                                 <action selector="languageAction:" destination="C2K-YA-WGI" id="Xws-cD-Qau"/>
-                                <segue destination="qg2-7l-shp" kind="presentation" id="RcF-0p-Ksi"/>
+                                <segue destination="qg2-7l-shp" kind="presentation" identifier="Language" id="RcF-0p-Ksi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
