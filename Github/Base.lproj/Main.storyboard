@@ -686,7 +686,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-qn-eA3">
-                                <rect key="frame" x="500" y="67" width="100" height="30"/>
+                                <rect key="frame" x="500" y="69" width="100" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -719,6 +719,7 @@
                             <constraint firstItem="z9B-bM-0tx" firstAttribute="bottom" secondItem="fFw-qn-eA3" secondAttribute="bottom" id="Snr-fn-9Np"/>
                             <constraint firstItem="tUa-MT-ozb" firstAttribute="leading" secondItem="eg6-ll-DTU" secondAttribute="leadingMargin" id="TEa-1h-4GI"/>
                             <constraint firstItem="fFw-qn-eA3" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="top" id="Y9v-gi-d9g"/>
+                            <constraint firstItem="fFw-qn-eA3" firstAttribute="bottom" secondItem="z9B-bM-0tx" secondAttribute="bottom" id="Ydm-c8-3Cq"/>
                             <constraint firstItem="fFw-qn-eA3" firstAttribute="centerY" secondItem="z9B-bM-0tx" secondAttribute="centerY" id="dSh-3X-wwB"/>
                             <constraint firstItem="z9B-bM-0tx" firstAttribute="leading" secondItem="eg6-ll-DTU" secondAttribute="leading" id="ddx-Qh-fm5"/>
                             <constraint firstItem="tUa-MT-ozb" firstAttribute="top" secondItem="z9B-bM-0tx" secondAttribute="bottom" constant="8" symbolic="YES" id="g4B-B9-5mr"/>
@@ -737,6 +738,7 @@
                                 <exclude reference="qmG-M3-ZbV"/>
                                 <exclude reference="Dkf-zy-cLH"/>
                                 <exclude reference="Y9v-gi-d9g"/>
+                                <exclude reference="dSh-3X-wwB"/>
                             </mask>
                         </variation>
                     </view>

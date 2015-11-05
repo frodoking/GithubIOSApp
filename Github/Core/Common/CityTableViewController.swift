@@ -28,12 +28,7 @@ class CityTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    } 
 
     // MARK: - Table view data source
 
@@ -55,6 +50,10 @@ class CityTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSUserDefaults.standardUserDefaults().setObject(cities[indexPath.section], forKey: "city")
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.

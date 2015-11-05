@@ -50,11 +50,6 @@ class LanguageTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -125,10 +120,8 @@ class LanguageTableViewController: UITableViewController {
             NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language2")
             break
         }
-        self.navigationController?.dismissViewControllerAnimated(true) { handle in
-        }
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
-
     /*
     // MARK: - Navigation
 

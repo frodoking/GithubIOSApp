@@ -11,53 +11,74 @@ import Alamofire
 import SwiftyJSON
 
 public class UsersViewModule {
-     static let Indicator: NSMutableArray = ["City", "Country", "World"]
-    var language: NSString?
-    var dataSource = DataSource()
+    static let Indicator: NSMutableArray = ["City", "Country", "World"]
+    var allDataSource = DataSource()
+    var countryDataSource = DataSource()
+    var cityDataSource = DataSource()
+    
+    var totalCount: Int = 0
     
     public func loadDataFromApiWithIsFirst(isFirst: Bool,  currentTab:Int, handler: (users: NSArray) -> Void) {
-        if (currentTab==1) {
+        var dataSource: DataSource?
+        var location: String = ""
+        var language: String = ""
+        var q: String = ""
+        
+        if let defaultLanguage = NSUserDefaults.standardUserDefaults().objectForKey("language") {
+            language = defaultLanguage as! String
+        }
+        
+        switch currentTab {
+        case 0:
+            dataSource = cityDataSource
             
-            var page:Int = 0
-            
-            if (isFirst) {
-                page = 1;
+            if let defaultCity = NSUserDefaults.standardUserDefaults().objectForKey("city") {
+                location = defaultCity as! String
             } else {
-                page = dataSource.page!+1;
+                location = "beijing"
             }
-            
-            var city: String
-            if let defaultCity = NSUserDefaults.standardUserDefaults().objectForKey("pinyinCity") {
-                city = defaultCity as! String
+            break
+        case 1:
+            dataSource = countryDataSource
+            if let defaultCountry = NSUserDefaults.standardUserDefaults().objectForKey("country") {
+                location = defaultCountry as! String
             } else {
-                city = "beijing"
+                location = "China"
             }
+            break
+        default:
+            dataSource = allDataSource
+            break
+        }
+        
+        var page:Int = 0
+        
+        if (isFirst) {
+            page = 1;
+        } else {
+            page = dataSource!.page!+1;
+        }
+        
+        q = "location:\(location)+language:\(language)"
+        if language.isEmpty {
+            q = "location:\(location)"
+            if location.isEmpty {
+                q = "language:all languages"
+            }
+        }
+
+        Server.shareInstance.searchUsersWithPage(page, q: q, sort: "followers", categoryLocation: location, categoryLanguage: language, completoinHandler: { (users, page, totalCount) -> Void in
+            if (page <= 1) {
+                 dataSource!.reset()
+            }
+            dataSource!.page = page
+            self.totalCount = totalCount
             
-            var language: String
-            if let defaultLanguage = NSUserDefaults.standardUserDefaults().objectForKey("language") {
-                language = defaultLanguage as! String
-            } else {
-                language = ""
-            }
-            
-            var q = "location:\(city)+language:\(language)"
-            if language.isEmpty {
-                q = "location:\(city)"
-            }
-            
-            Server.shareInstance.searchUsersWithPage(page, q: q, sort: "desc", categoryLocation: city, categoryLanguage: language, completoinHandler: { (users, page, totalCount) -> Void in
-                    if (page <= 1) {
-                        self.dataSource.reset()
-                    }
-                    self.dataSource.page = page
-                    print(totalCount)
-                
-                    self.dataSource.dsArray?.addObjectsFromArray(users)
-                    handler(users: self.dataSource.dsArray!)
-                }, errorHandler: { (errors) -> Void in
-                    // do nothing
-                    handler(users: NSArray())
-                })
-            }
+            dataSource!.dsArray?.addObjectsFromArray(users)
+            handler(users: dataSource!.dsArray!)
+            }, errorHandler: { (errors) -> Void in
+                // do nothing
+                handler(users: NSArray())
+        })
     }
 }

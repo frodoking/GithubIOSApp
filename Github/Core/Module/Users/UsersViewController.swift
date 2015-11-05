@@ -12,7 +12,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
     @IBOutlet weak var totalCountLabel: UILabel!
-     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -22,7 +22,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     
     var viewModule: UsersViewModule?
-     var tabIndex: Int = 1
+     var tabIndex: Int = 0
     
     var users = [User]()
 
@@ -39,6 +39,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         
         viewModule = UsersViewModule()
         
+        
         viewPagerIndicator.titles = UsersViewModule.Indicator
         //监听ViewPagerIndicator选中项变化
         viewPagerIndicator.delegate = self
@@ -46,7 +47,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         viewPagerIndicator.setTitleColorForState(Theme.Color, state: UIControlState.Selected) //选中文字的颜色
         viewPagerIndicator.setTitleColorForState(UIColor.blackColor(), state: UIControlState.Normal) //正常文字颜色
         viewPagerIndicator.tintColor = Theme.Color //指示器和基线的颜色
-        viewPagerIndicator.showBottomLine = false //基线是否显示
+        viewPagerIndicator.showBottomLine = true //基线是否显示
         viewPagerIndicator.autoAdjustSelectionIndicatorWidth = true//指示器宽度是按照文字内容大小还是按照count数量平分屏幕
         viewPagerIndicator.indicatorDirection = .Bottom//指示器位置
         viewPagerIndicator.titleFont = UIFont.systemFontOfSize(14)
@@ -57,6 +58,20 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let city = NSUserDefaults.standardUserDefaults().objectForKey("city") {
+            UsersViewModule.Indicator[0] = city
+        } else {
+            UsersViewModule.Indicator[0] = "beijing"
+        }
+        
+        if let country = NSUserDefaults.standardUserDefaults().objectForKey("country") {
+            UsersViewModule.Indicator[1] = country
+        } else {
+            UsersViewModule.Indicator[1] = "China"
+        }
         
         viewPagerIndicator.setSelectedIndex(tabIndex)
     }
@@ -67,6 +82,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
             self.refreshControl.endRefreshing()
             if users.count > 0 {
                 self.users = users as! [User]
+                self.totalCountLabel.text = "total:\(self.viewModule!.totalCount)"
                 self.tableView.reloadData()
             }
         }
@@ -86,16 +102,6 @@ extension UsersViewController {
     // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
         self.tabIndex = indicatorIndex
-        switch indicatorIndex {
-        case 0:
-            break
-        case 1:
-            break
-        case 2:
-            break
-        default:break
-        }
-        
         self.refreshAction(self.refreshControl)
     }
 }

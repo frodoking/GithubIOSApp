@@ -45,9 +45,10 @@ public class Server: NSObject {
                     NSLog("======= Success ======= ")
                     if let json = response.result.value {
                         let jsonObject = JSON(json)
-                        let totalCount = jsonObject["total_count"].int
-                        print("totalCount: \(totalCount)")
-                        
+                        var totalCount = 0
+                        if let count = jsonObject["total_count"].int  {
+                            totalCount = count
+                        }
                         let jsonItems = jsonObject["items"].arrayValue
                         var users = [User]()
                         for ( var i = 0; i < jsonItems.count; i++) {
@@ -64,7 +65,7 @@ public class Server: NSObject {
                             users.append(user)
                         }
                         
-                        completoinHandler(users: users, page: page, totalCount: totalCount!)
+                        completoinHandler(users: users, page: page, totalCount: totalCount)
                     }
                 } else {
                     if(response.result.error != nil) {
