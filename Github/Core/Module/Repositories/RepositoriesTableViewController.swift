@@ -11,7 +11,11 @@ import UIKit
 class RepositoriesTableViewController: UITableViewController {
 
     var viewModule: RepositoriesViewModule?
-    var language: String = "JavaScript"
+    var language: String = "JavaScript" {
+        didSet {
+            self.title = language
+        }
+    }
     
     var repositories = [Repository]()
 
@@ -24,30 +28,15 @@ class RepositoriesTableViewController: UITableViewController {
         
         
         viewModule = RepositoriesViewModule()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let languageAppear = NSUserDefaults.standardUserDefaults().objectForKey("languageAppear1")?.integerValue {
-            if (languageAppear == 2) {
-                NSUserDefaults.standardUserDefaults().setObject("1", forKey: "languageAppear1")
-                if let languageTmp = NSUserDefaults.standardUserDefaults().objectForKey("language1")?.stringValue {
-                    if (languageTmp.isEmpty) {
-                        self.language = "JavaScript";
-                    } else {
-                        self.language = languageTmp
-                    }
-                }
-                
-                self.title = language;
-            }
-        }
-        
+        self.hidesBottomBarWhenPushed = true
         refresh()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.hidesBottomBarWhenPushed = false
     }
     
     @IBAction func refreshAction(sender: UIRefreshControl) {
@@ -64,6 +53,10 @@ class RepositoriesTableViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func languageAction(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier(Key.LanguageFrom.Repository, sender: self)
+    }
 }
 
 // MARK: - Table view data source
@@ -76,10 +69,6 @@ extension RepositoriesTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
-    }
-    
-    @IBAction func languageAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("repositoriesLanguage", sender: self)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -143,9 +132,11 @@ extension RepositoriesTableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let viewController = segue.destinationViewController
-        if let controller = viewController as? LanguageTableViewController {
-            controller.entranceType = LanguageEntranceType.RepLanguageEntranceType
-            controller.title = "Language"
+        if let navigationController = viewController as? UINavigationController {
+            if let controller = navigationController.topViewController as? LanguageTableViewController {
+                controller.entranceType = LanguageEntranceType.RepLanguageEntranceType
+                controller.title = "Language"
+            }
         }
     }
 }

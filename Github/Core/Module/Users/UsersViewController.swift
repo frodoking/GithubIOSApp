@@ -22,7 +22,24 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     
     var viewModule: UsersViewModule?
-     var tabIndex: Int = 0
+    var tabIndex: Int = 0
+    var language: String = "JavaScript" {
+        didSet {
+            self.title = language
+        }
+    }
+    
+    var city: String = "beijing" {
+        didSet {
+            viewPagerIndicator.titles = [city, country, "World"]
+        }
+    }
+    
+    var country: String = "China" {
+        didSet {
+            viewPagerIndicator.titles = [city, country, "World"]
+        }
+    }
     
     var users = [User]()
 
@@ -40,7 +57,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         viewModule = UsersViewModule()
         
         
-        viewPagerIndicator.titles = UsersViewModule.Indicator
+        viewPagerIndicator.titles = [city, country, "World"]
         //监听ViewPagerIndicator选中项变化
         viewPagerIndicator.delegate = self
         
@@ -61,19 +78,20 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.hidesBottomBarWhenPushed = true
         if let city = NSUserDefaults.standardUserDefaults().objectForKey("city") {
-            UsersViewModule.Indicator[0] = city
-        } else {
-            UsersViewModule.Indicator[0] = "beijing"
+            self.city = city as! String
         }
         
         if let country = NSUserDefaults.standardUserDefaults().objectForKey("country") {
-            UsersViewModule.Indicator[1] = country
-        } else {
-            UsersViewModule.Indicator[1] = "China"
+            self.country = country as! String
         }
         
         viewPagerIndicator.setSelectedIndex(tabIndex)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.hidesBottomBarWhenPushed = false
     }
     
     func refreshAction(sender: UIRefreshControl) {
@@ -93,7 +111,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     }
 
     @IBAction func languageAction(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier(Key.SegueIdentifier.Language, sender: self)
+        self.performSegueWithIdentifier(Key.LanguageFrom.User, sender: self)
     }
 }
 
@@ -132,44 +150,6 @@ extension UsersViewController {
     }
 }
 
-// MARK: - Table view data delegate
-extension UsersViewController {
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-}
-
 // MARK: - Navigation
 extension UsersViewController {
     
@@ -178,19 +158,16 @@ extension UsersViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let viewController = segue.destinationViewController
-        if let controller = viewController as? LanguageTableViewController {
-            controller.entranceType = LanguageEntranceType.UserLanguageEntranceType
-            controller.title = "Language"
-        } else if let
-            navigationController = viewController as? UINavigationController,
-            detailViewController = navigationController.topViewController as? UserDetailViewController
-        {
-            if let cell = sender as? UserTableViewCell {
-                let selectedIndex = tableView.indexPathForCell(cell)?.section
-                if let index = selectedIndex {
-                    detailViewController.user = users[index]
+        if let languageTableViewController = viewController as? LanguageTableViewController {
+            languageTableViewController.entranceType = LanguageEntranceType.UserLanguageEntranceType
+            languageTableViewController.title = "Language"
+        } else if let detailViewController = viewController as? UserDetailViewController {
+                if let cell = sender as? UserTableViewCell {
+                    let selectedIndex = tableView.indexPathForCell(cell)?.section
+                    if let index = selectedIndex {
+                        detailViewController.user = users[index]
+                    }
                 }
             }
         }
-    }
 }

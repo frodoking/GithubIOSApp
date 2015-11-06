@@ -15,8 +15,13 @@ public struct Key {
     }
     public struct SegueIdentifier {
         static let Country = "Country"
-        static let City = "City"
-        static let Language = "Language"
+        static let City = "City" 
+    }
+    
+    public struct LanguageFrom {
+        static let User = "Language From User"
+        static let Repository = "Language From Repository"
+        static let Trending = "Repository"
     }
     
     public struct CellReuseIdentifier {

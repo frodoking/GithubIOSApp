@@ -16,7 +16,7 @@ class LanguageTableViewController: UITableViewController {
     var entranceType: LanguageEntranceType = LanguageEntranceType.RepLanguageEntranceType
     
     @IBAction func backAction(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {
@@ -106,21 +106,22 @@ class LanguageTableViewController: UITableViewController {
     */
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch entranceType {
-        case .UserLanguageEntranceType:
-            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear")
-            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language")
-            break
-        case .RepLanguageEntranceType:
-            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear1")
-            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language1")
-            break
-        case .TrendingLanguageEntranceType:
-            NSUserDefaults.standardUserDefaults().setObject(2, forKey: "languageAppear2")
-            NSUserDefaults.standardUserDefaults().setObject(languages[indexPath.section], forKey: "language2")
-            break
+        let language = languages[indexPath.section]
+        if let prevViewController = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] {
+            switch prevViewController {
+            case is UsersViewController:
+                break
+            case is RepositoriesTableViewController:
+                let repositoriesTableViewController = prevViewController as! RepositoriesTableViewController
+                repositoriesTableViewController.language = language
+                break
+            default:break
+            }
+            self.navigationController?.popToViewController(prevViewController, animated: true)
+
+        } else {
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation

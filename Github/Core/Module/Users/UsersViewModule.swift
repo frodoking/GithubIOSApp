@@ -10,8 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public class UsersViewModule {
-    static let Indicator: NSMutableArray = ["City", "Country", "World"]
+public class UsersViewModule { 
     var allDataSource = DataSource()
     var countryDataSource = DataSource()
     var cityDataSource = DataSource()

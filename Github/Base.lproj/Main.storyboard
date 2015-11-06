@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="TNT-f0-Iaj" customClass="CountyTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T9N-MZ-dXg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,6 +35,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="KKP-8r-81Q" kind="show" identifier="City" id="oxD-1m-wu5"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -49,20 +52,17 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="V7g-lF-02q" kind="presentation" identifier="City" id="wQf-vU-XtQ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cv-Of-i21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1326" y="-1416"/>
+            <point key="canvasLocation" x="514" y="-1406"/>
         </scene>
         <!--Language-->
         <scene sceneID="L9s-Dg-yGo">
             <objects>
                 <tableViewController id="Zla-ml-o6i" customClass="LanguageTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X3V-H5-VpM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,7 +103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8J-m0-iYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2886" y="-1416"/>
+            <point key="canvasLocation" x="2106" y="-1416"/>
         </scene>
         <!--Name-->
         <scene sceneID="6a8-tL-Kdf">
@@ -114,7 +114,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nVC-s3-z9k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DPM-hI-gzL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GE2-FL-5aA">
@@ -204,7 +204,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e6Y-ao-bpD">
-                                <rect key="frame" x="0.0" y="237" width="600" height="363"/>
+                                <rect key="frame" x="0.0" y="237" width="600" height="314"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -306,12 +306,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjA-MU-FQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2106" y="-688"/>
+            <point key="canvasLocation" x="1326" y="-688"/>
         </scene>
         <!--Home Tab View Controller-->
         <scene sceneID="4dc-sn-XCu">
             <objects>
-                <tabBarController id="2Pb-XO-yYN" customClass="HomeTabViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController hidesBottomBarWhenPushed="YES" id="2Pb-XO-yYN" customClass="HomeTabViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="LNk-Ip-OoZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -360,6 +360,7 @@
                         <barButtonItem key="rightBarButtonItem" title="语言" id="r31-oK-wyO">
                             <connections>
                                 <action selector="languageAction:" destination="tlS-Hr-54r" id="AjW-Ue-WnO"/>
+                                <segue destination="Zla-ml-o6i" kind="show" identifier="Language From Repository" id="bT1-an-kE2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -370,9 +371,6 @@
                             <action selector="refreshAction:" destination="tlS-Hr-54r" eventType="valueChanged" id="i7k-s5-Lnl"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <segue destination="qg2-7l-shp" kind="presentation" identifier="repositoriesLanguage" id="3aM-Ig-V50"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBN-cO-G8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,7 +381,7 @@
             <objects>
                 <tableViewController id="KKP-8r-81Q" customClass="CityTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0EW-B4-Wzx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -424,64 +422,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obI-jh-H3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1326" y="-2131"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="grJ-pS-5mX">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WmG-E7-EJo" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YvC-CF-m7o">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="TNT-f0-Iaj" kind="relationship" relationship="rootViewController" id="snX-85-Ql0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NFi-xM-XAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="514" y="-1416"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="V4i-yb-FNv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qg2-7l-shp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nax-pv-rkz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Zla-ml-o6i" kind="relationship" relationship="rootViewController" id="2XY-1q-d5q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cze-Nn-fVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2106" y="-1422"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yWG-ai-ii4">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V7g-lF-02q" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bPM-Db-TI8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="KKP-8r-81Q" kind="relationship" relationship="rootViewController" id="Fr1-Lh-wdg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TbZ-pY-kME" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="514" y="-2131"/>
+            <point key="canvasLocation" x="1326" y="-1406"/>
         </scene>
         <!--Repositories-->
         <scene sceneID="7eG-1u-zYe">
@@ -792,25 +733,6 @@
             </objects>
             <point key="canvasLocation" x="-298" y="1449"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="O50-3M-ay8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ca0-me-x43" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qdN-Tx-gIy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fBK-Y1-jhm" kind="relationship" relationship="rootViewController" id="4L0-G7-mEa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fvy-cu-qfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1326" y="-688"/>
-        </scene>
         <!--Java-->
         <scene sceneID="5ip-tM-s8a">
             <objects>
@@ -845,7 +767,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="Ca0-me-x43" kind="presentation" id="XTn-z9-MRy"/>
+                                            <segue destination="fBK-Y1-jhm" kind="show" id="rDt-gW-3Bg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -911,13 +833,13 @@
                         <barButtonItem key="leftBarButtonItem" title="城市" id="kSQ-ZA-wvW">
                             <connections>
                                 <action selector="cityAction:" destination="C2K-YA-WGI" id="Joh-0A-3J6"/>
-                                <segue destination="WmG-E7-EJo" kind="presentation" identifier="Country" id="MTQ-T5-Xca"/>
+                                <segue destination="TNT-f0-Iaj" kind="show" identifier="Country" id="lkn-Z3-Ejb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="语言" id="wFM-0Y-glr">
                             <connections>
                                 <action selector="languageAction:" destination="C2K-YA-WGI" id="Xws-cD-Qau"/>
-                                <segue destination="qg2-7l-shp" kind="presentation" identifier="Language" id="RcF-0p-Ksi"/>
+                                <segue destination="Zla-ml-o6i" kind="show" identifier="Language From User" id="ZOK-1T-8Og"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -958,6 +880,6 @@
         <image name="more" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RcF-0p-Ksi"/>
+        <segue reference="ZOK-1T-8Og"/>
     </inferredMetricsTieBreakers>
 </document>
