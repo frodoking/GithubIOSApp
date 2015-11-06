@@ -42,7 +42,9 @@ public class Server: NSObject {
             Alamofire.request(.GET, Server.URL.Users, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
                 .responseJSON { response in
                 if response.result.isSuccess {
-                    NSLog("======= Success ======= ")
+                    NSLog("======= Success Response ======= ")
+                    print(response)
+                    NSLog("======= Success Response ======= ")
                     if let json = response.result.value {
                         let jsonObject = JSON(json)
                         var totalCount = 0
@@ -56,7 +58,6 @@ public class Server: NSObject {
                             
                             let user = User()
                             user.parseJson(item)
-                            print(user.description)
                             
                             user.rank = Int((page-1)*30+(i+1))
                             user.categoryLanguage = categoryLanguage;
@@ -90,7 +91,6 @@ public class Server: NSObject {
                         if let json = response.result.value {
                             let jsonObject = JSON(json)
                             let totalCount = jsonObject["total_count"].int
-                            print("totalCount: \(totalCount)")
                             
                             let jsonItems = jsonObject["items"].arrayValue
                             var repositories = [Repository]()
@@ -99,7 +99,6 @@ public class Server: NSObject {
                                 
                                 let repository = Repository()
                                 repository.parseJson(item)
-                                print(repository.description)
                                 repositories.append(repository)
                             }
                             
@@ -136,7 +135,6 @@ public class Server: NSObject {
                                 
                                 let repository = Repository()
                                 repository.parseJson(item)
-                                print(repository.description)
                                 repositories.append(repository)
                                 NSLog("==>> repository \(repository) <<== ")
                             }
@@ -175,7 +173,6 @@ public class Server: NSObject {
                                 let user = User()
                                 user.parseJson(item)
                                 user.rank = (i+1)
-                                print(user.description)
                                 users.append(user)
                                 NSLog("==>> user \(user) <<== ")
                             }
@@ -214,7 +211,6 @@ public class Server: NSObject {
                                 let user = User()
                                 user.parseJson(item)
                                 user.rank = (i+1)
-                                print(user.description)
                                 users.append(user)
                                 NSLog("==>> user \(user) <<== ")
                             }

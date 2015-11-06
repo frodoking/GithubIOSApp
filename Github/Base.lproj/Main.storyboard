@@ -9,7 +9,7 @@
         <!--Country-->
         <scene sceneID="ieC-q5-O2J">
             <objects>
-                <tableViewController id="TNT-f0-Iaj" customClass="CountyTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="TNT-f0-Iaj" customClass="CountryTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T9N-MZ-dXg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -376,7 +376,7 @@
             </objects>
             <point key="canvasLocation" x="514" y="8"/>
         </scene>
-        <!--城市-->
+        <!--City-->
         <scene sceneID="2Du-jO-OVf">
             <objects>
                 <tableViewController id="KKP-8r-81Q" customClass="CityTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
@@ -412,7 +412,7 @@
                             <outlet property="delegate" destination="KKP-8r-81Q" id="wLl-yv-jBG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="城市" id="1a1-eG-YYw">
+                    <navigationItem key="navigationItem" title="City" id="1a1-eG-YYw">
                         <barButtonItem key="leftBarButtonItem" title="返回" id="wHk-xx-lo1">
                             <connections>
                                 <action selector="backAction:" destination="KKP-8r-81Q" id="YyY-sT-NQx"/>

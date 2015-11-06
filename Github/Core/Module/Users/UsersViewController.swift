@@ -79,15 +79,8 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     override func viewWillAppear(animated: Bool) {
         self.hidesBottomBarWhenPushed = true
-        if let city = NSUserDefaults.standardUserDefaults().objectForKey("city") {
-            self.city = city as! String
-        }
-        
-        if let country = NSUserDefaults.standardUserDefaults().objectForKey("country") {
-            self.country = country as! String
-        }
-        
         viewPagerIndicator.setSelectedIndex(tabIndex)
+        self.refreshAction(self.refreshControl)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -96,7 +89,13 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     func refreshAction(sender: UIRefreshControl) {
         refreshControl.beginRefreshing()
-        viewModule!.loadDataFromApiWithIsFirst(true, currentTab: tabIndex) { users in
+        var location = ""
+        if tabIndex == 0 {
+            location = city
+        } else if tabIndex == 1 {
+            location = country
+        }
+        viewModule!.loadDataFromApiWithIsFirst(true, location: location, language: language) { users in
             self.refreshControl.endRefreshing()
             if users.count > 0 {
                 self.users = users as! [User]
@@ -158,10 +157,7 @@ extension UsersViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let viewController = segue.destinationViewController
-        if let languageTableViewController = viewController as? LanguageTableViewController {
-            languageTableViewController.entranceType = LanguageEntranceType.UserLanguageEntranceType
-            languageTableViewController.title = "Language"
-        } else if let detailViewController = viewController as? UserDetailViewController {
+        if let detailViewController = viewController as? UserDetailViewController {
                 if let cell = sender as? UserTableViewCell {
                     let selectedIndex = tableView.indexPathForCell(cell)?.section
                     if let index = selectedIndex {

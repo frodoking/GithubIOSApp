@@ -22,7 +22,6 @@
 		7E9CBA9A1BDC9D51005EBFC0 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBA991BDC9D51005EBFC0 /* UserDetailViewController.swift */; };
 		7E9CBAAA1BDDFAB8005EBFC0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CBAA81BDDFAB8005EBFC0 /* UserTableViewCell.swift */; };
 		7EA9991D1BE84A8B0001E991 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA999191BE84A8B0001E991 /* DataSource.swift */; };
-		7EA9991E1BE84A8B0001E991 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9991A1BE84A8B0001E991 /* Language.swift */; };
 		7EA9991F1BE84A8B0001E991 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9991B1BE84A8B0001E991 /* Repository.swift */; };
 		7EA999201BE84A8B0001E991 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9991C1BE84A8B0001E991 /* User.swift */; };
 		7EA9992D1BE84B5F0001E991 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9992B1BE84B5F0001E991 /* Server.swift */; };
@@ -157,7 +156,6 @@
 		7E9CBA991BDC9D51005EBFC0 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDetailViewController.swift; path = Core/Module/Users/UserDetailViewController.swift; sourceTree = "<group>"; };
 		7E9CBAA81BDDFAB8005EBFC0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTableViewCell.swift; path = Core/Common/Views/UserTableViewCell.swift; sourceTree = "<group>"; };
 		7EA999191BE84A8B0001E991 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = Core/Common/Models/DataSource.swift; sourceTree = "<group>"; };
-		7EA9991A1BE84A8B0001E991 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = Core/Common/Models/Language.swift; sourceTree = "<group>"; };
 		7EA9991B1BE84A8B0001E991 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Core/Common/Models/Repository.swift; sourceTree = "<group>"; };
 		7EA9991C1BE84A8B0001E991 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Core/Common/Models/User.swift; sourceTree = "<group>"; };
 		7EA9992B1BE84B5F0001E991 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = Core/Common/Server.swift; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				7EA999191BE84A8B0001E991 /* DataSource.swift */,
-				7EA9991A1BE84A8B0001E991 /* Language.swift */,
 				7EA9991B1BE84A8B0001E991 /* Repository.swift */,
 				7EA9991C1BE84A8B0001E991 /* User.swift */,
 			);
@@ -578,7 +575,6 @@
 				7E9CBA841BDB25B7005EBFC0 /* DiscoveryTableViewController.swift in Sources */,
 				7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */,
 				7EA9992E1BE84B5F0001E991 /* Theme.swift in Sources */,
-				7EA9991E1BE84A8B0001E991 /* Language.swift in Sources */,
 				7EA999391BE84CD10001E991 /* UsersViewModule.swift in Sources */,
 				7E9776AE1BDA0F30001E1904 /* RepositoriesTableViewController.swift in Sources */,
 				7EA9991F1BE84A8B0001E991 /* Repository.swift in Sources */,
