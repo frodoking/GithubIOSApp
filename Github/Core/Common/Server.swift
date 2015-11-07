@@ -19,6 +19,7 @@ public class Server: NSObject {
         static let User: String = Host + "/users/%@" // users/:username
         static let Users: String = Host + "/search/users" // sort=followers&order=desc&q=language:java
         static let Repositories: String = Host + "/search/repositories"
+        static let Repository: String = Host + "/repos/%@/%@/%@" // /repos/:owner/:repo/contributors
         static let UserRepositories: String = Host + "/users/%@/repos" // /users/frodoking/repos
         static let UserFollowing: String = Host + "/users/%@/following"
         static let UserFollowers: String = Host + "/users/%@/followers"
@@ -148,6 +149,97 @@ public class Server: NSObject {
         errorHandler: (errors: AnyObject) -> Void) {
             let params = ["page": "\(page)", "sort": "\(sort)"]
             let url: String = NSString.init(format: Server.URL.UserRepositories, userName) as String
+            fetchRepositortiesWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    //List users followed by another user
+    //https://developer.github.com/v3/users/followers/#list-users-followed-by-another-user
+    //GET /users/:username/following like /users/%@/following?page=%ld
+    public func userFollowingWithPage(page: Int, userName: String,
+        completoinHandler: (users: [User], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void)  {
+            let params = ["page": "\(page)"]
+            let url: String = NSString.init(format: Server.URL.UserFollowing, userName) as String
+            fetchUsersWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    //List followers of a user
+    //https://developer.github.com/v3/users/followers/#list-followers-of-a-user
+    //GET /users/:username/followers like /users/%@/followers?page=%ld
+    public func userFollowersWithPage(page: Int, userName: String,
+        completoinHandler: (users: [User], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void)  {
+            let params = ["page": "\(page)"]
+            let url: String = NSString.init(format: Server.URL.UserFollowers, userName) as String
+            NSLog("Fetch: Host: \(url) , params: \(params)")
+            fetchUsersWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    //https://developer.github.com/v3/repos/#list-contributors
+    //List contributors ,GET /repos/:owner/:repo/contributors
+    public func reposDetailForContributorsWithPage (userName: String, repositoryName: String, page: Int,
+        completoinHandler: (users: [User], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
+            let params = ["page": "\(page)"]
+            let url: String = NSString.init(format: Server.URL.Repository, userName, repositoryName, "contributors") as String
+            fetchUsersWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    //https://developer.github.com/v3/repos/forks/#list-forks
+    //List forks ,       GET /repos/:owner/:repo/forks
+    public func reposDetailForForksWithPage (userName: String, repositoryName: String, page: Int,
+        completoinHandler: (repositories: [Repository], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
+            let params = ["page": "\(page)"]
+            let url: String = NSString.init(format: Server.URL.Repository, userName, repositoryName, "forks") as String
+            fetchRepositortiesWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    //https://developer.github.com/v3/activity/starring/#list-stargazers
+    //List Stargazers ,GET /repos/:owner/:repo/stargazers
+    public func reposDetailForStargazersWithPage (userName: String, repositoryName: String, page: Int,
+        completoinHandler: (users: [User], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
+            let params = ["page": "\(page)"]
+            let url: String = NSString.init(format: Server.URL.Repository, userName, repositoryName, "stargazers") as String
+            fetchUsersWithPage(url, params: params, page: page, completoinHandler: completoinHandler, errorHandler: errorHandler)
+    }
+    
+    private func fetchUsersWithPage (url: String, params: [String: AnyObject], page: Int,
+        completoinHandler: (users: [User], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
+            NSLog("Fetch: Host: \(url) , params: \(params)")
+            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
+                .responseJSON { response in
+                    if response.result.isSuccess {
+                        NSLog("======= Success ======= ")
+                        if let json = response.result.value {
+                            let jsonObject = JSON(json)
+                            let jsonItems = jsonObject.arrayValue
+                            var users = [User]()
+                            for ( var i = 0; i < jsonItems.count; i++) {
+                                let item = jsonItems[i]
+                                
+                                let user = User()
+                                user.parseJson(item)
+                                user.rank = (i+1)
+                                users.append(user)
+                            }
+                            
+                            completoinHandler(users: users, page: page)
+                        }
+                    } else {
+                        if(response.result.error != nil) {
+                            NSLog("Error: \(response.result.error)")
+                            errorHandler(errors: response.result.error!)
+                        }
+                    }
+            }
+    }
+    
+    private func fetchRepositortiesWithPage (url: String, params: [String: AnyObject], page: Int,
+        completoinHandler: (repositories: [Repository], page: Int) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
             NSLog("Fetch: Host: \(url) , params: \(params)")
             Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
@@ -174,82 +266,8 @@ public class Server: NSObject {
                             errorHandler(errors: response.result.error!)
                         }
                     }
+
             }
     }
     
-    //List users followed by another user
-    //https://developer.github.com/v3/users/followers/#list-users-followed-by-another-user
-    //GET /users/:username/following like /users/%@/following?page=%ld
-    public func userFollowingWithPage(page: Int, userName: String,
-        completoinHandler: (users: [User], page: Int) -> Void,
-        errorHandler: (errors: AnyObject) -> Void)  {
-            let params = ["page": "\(page)"]
-            let url: String = NSString.init(format: Server.URL.UserFollowing, userName) as String
-            NSLog("Fetch: Host: \(url) , params: \(params)")
-            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
-                .responseJSON { response in
-                    if response.result.isSuccess {
-                        NSLog("======= Success ======= ")
-                        if let json = response.result.value {
-                            let jsonObject = JSON(json)
-                            let jsonItems = jsonObject.arrayValue
-                            var users = [User]()
-                            for ( var i = 0; i < jsonItems.count; i++) {
-                                let item = jsonItems[i]
-                                
-                                let user = User()
-                                user.parseJson(item)
-                                user.rank = (i+1)
-                                users.append(user)
-                                NSLog("==>> user \(user) <<== ")
-                            }
-                            
-                            completoinHandler(users: users, page: page)
-                        }
-                    } else {
-                        if(response.result.error != nil) {
-                            NSLog("Error: \(response.result.error)")
-                            errorHandler(errors: response.result.error!)
-                        }
-                    }
-            }
-    }
-    
-    //List followers of a user
-    //https://developer.github.com/v3/users/followers/#list-followers-of-a-user
-    //GET /users/:username/followers like /users/%@/followers?page=%ld
-    public func userFollowersWithPage(page: Int, userName: String,
-        completoinHandler: (users: [User], page: Int) -> Void,
-        errorHandler: (errors: AnyObject) -> Void)  {
-            let params = ["page": "\(page)"]
-            let url: String = NSString.init(format: Server.URL.UserFollowers, userName) as String
-            NSLog("Fetch: Host: \(url) , params: \(params)")
-            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
-                .responseJSON { response in
-                    if response.result.isSuccess {
-                        NSLog("======= Success ======= ")
-                        if let json = response.result.value {
-                            let jsonObject = JSON(json)
-                            let jsonItems = jsonObject.arrayValue
-                            var users = [User]()
-                            for ( var i = 0; i < jsonItems.count; i++) {
-                                let item = jsonItems[i]
-                                
-                                let user = User()
-                                user.parseJson(item)
-                                user.rank = (i+1)
-                                users.append(user)
-                                NSLog("==>> user \(user) <<== ")
-                            }
-                            
-                            completoinHandler(users: users, page: page)
-                        }
-                    } else {
-                        if(response.result.error != nil) {
-                            NSLog("Error: \(response.result.error)")
-                            errorHandler(errors: response.result.error!)
-                        }
-                    }
-            }
-    }
 }

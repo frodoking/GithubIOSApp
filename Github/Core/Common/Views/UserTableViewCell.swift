@@ -76,7 +76,10 @@ class UserTableViewCell: UITableViewCell {
 
     private func updateUi() {
         if let user = self.user {
-            rankLabel.text = "\(user.rank!)"
+            if let _ = user.rank {
+                rankLabel.text = "\(user.rank!)"
+            }
+            
             mainLabel.text = user.login!
             detailLabel.text = user.url!
             

@@ -52,7 +52,7 @@ class RepositoryDetailViewController: UIViewController ,ViewPagerIndicatorDelega
         }
         
         if let name = repository!.name {
-            nameBt.setTitle(name, forState:UIControlState.Normal)
+            nameBt.setTitle("\((repository?.owner?.login)!)/\(name)", forState:UIControlState.Normal)
         }
         
         if let homePage = repository!.homepage {
@@ -114,14 +114,14 @@ class RepositoryDetailViewController: UIViewController ,ViewPagerIndicatorDelega
     func refreshAction(sender: UIRefreshControl) {
         self.refreshControl.beginRefreshing()
         
-//        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
-//            handler: { array in
-//                self.refreshControl.endRefreshing()
-//                
-//                if array.count > 0 {
-//                    self.array = array
-//                }
-//        })
+        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (repository?.owner?.login)!, repositoryName: (repository?.name)!,
+            handler: { array in
+                self.refreshControl.endRefreshing()
+                
+                if array.count > 0 {
+                    self.array = array
+                }
+        })
     }
 }
 
@@ -162,7 +162,12 @@ extension RepositoryDetailViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
-        cell.user = self.array![indexPath.section] as? User
+        if let user = self.array![indexPath.section] as? User {
+            cell.user = user
+        } else if let repository = self.array![indexPath.section] as? Repository {
+            cell.user = repository.owner
+        }
+        
         return cell
     }
     
