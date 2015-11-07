@@ -97,9 +97,17 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
-        updateUserInfo()
-        
         viewModule = UserDetailViewModule()
+        if self.user != nil {
+            viewModule?.loadUserFromApi((self.user!.login)!, handler: { user in
+                if user != nil {
+                    self.user = user
+                    self.updateUserInfo()
+                }
+            })
+        }
+        
+        updateUserInfo()
         
         viewPagerIndicator.titles = UserDetailViewModule.Indicator
         //监听ViewPagerIndicator选中项变化

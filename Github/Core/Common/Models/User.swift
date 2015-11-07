@@ -8,9 +8,39 @@
 import UIKit
 import SwiftyJSON
 
+/*
+"login": "frodoking",
+"id": 7484982,
+"avatar_url": "https://avatars.githubusercontent.com/u/7484982?v=3",
+"gravatar_id": "",
+"url": "https://api.github.com/users/frodoking",
+"html_url": "https://github.com/frodoking",
+"followers_url": "https://api.github.com/users/frodoking/followers",
+"following_url": "https://api.github.com/users/frodoking/following{/other_user}",
+"gists_url": "https://api.github.com/users/frodoking/gists{/gist_id}",
+"starred_url": "https://api.github.com/users/frodoking/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/frodoking/subscriptions",
+"organizations_url": "https://api.github.com/users/frodoking/orgs",
+"repos_url": "https://api.github.com/users/frodoking/repos",
+"events_url": "https://api.github.com/users/frodoking/events{/privacy}",
+"received_events_url": "https://api.github.com/users/frodoking/received_events",
+"type": "User",
+"site_admin": false,
+"name": "frodo",
+"company": "BD",
+"blog": "http://frodoking.github.io/",
+"location": "beijing",
+"email": "awangyun8@gmail.com",
+"hireable": true,
+"bio": null,
+"public_repos": 42,
+"public_gists": 0,
+"followers": 16,
+"following": 11,
+"created_at": "2014-05-05T05:14:43Z",
+"updated_at": "2015-11-07T05:29:00Z"
+*/
 public class User: NSObject {
-
-    
     public var rank: Int?
     public var categoryLocation: String?
     public var categoryLanguage: String?
@@ -32,7 +62,6 @@ public class User: NSObject {
     public var received_events_url: String?
     public var type: String?
     public var site_admin: Bool?
-    public var score: String?
     
     //detail part
     public var name: String?
@@ -40,10 +69,14 @@ public class User: NSObject {
     public var blog: String?
     public var location: String?
     public var email: String?
+    public var hireable: Bool?
+    public var bio: String?
     public var public_repos: Int?
+    public var public_gists: Int?
     public var followers: Int?
     public var following: Int?
     public var created_at: String?
+    public var updated_at: String?
     
     public func parseJson(json: JSON) {
         if let id = json["id"].double {
@@ -126,10 +159,6 @@ public class User: NSObject {
             self.site_admin = site_admin
         }
         
-        if let score = json["score"].string {
-            self.score = score
-        }
-        
         if let name = json["name"].string {
             self.name = name
         }
@@ -150,6 +179,9 @@ public class User: NSObject {
         if let public_repos = json["public_repos"].int {
             self.public_repos = public_repos
         }
+        if let public_gists = json["public_gists"].int {
+            self.public_gists = public_gists
+        }
         if let followers = json["followers"].int {
             self.followers = followers
         }
@@ -158,11 +190,13 @@ public class User: NSObject {
         }
         if let created_at = json["created_at"].string {
             self.created_at = created_at
-        } 
+        }
+        if let updated_at = json["updated_at"].string {
+            self.updated_at = updated_at
+        }
     }
     
     override public var description: String {
-      return "my id: \(id!) \n" +
-        "url: \(url!)"
+      return JSON(self).description
     }
 }

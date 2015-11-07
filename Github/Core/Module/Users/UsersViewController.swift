@@ -79,8 +79,10 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     override func viewWillAppear(animated: Bool) {
         self.hidesBottomBarWhenPushed = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         viewPagerIndicator.setSelectedIndex(tabIndex)
-        self.refreshAction(self.refreshControl)
     }
     
     override func viewWillDisappear(animated: Bool) {

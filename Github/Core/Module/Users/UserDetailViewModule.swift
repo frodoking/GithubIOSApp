@@ -14,7 +14,17 @@ public class UserDetailViewModule {
     var userFollowingDataSource = DataSource()
     var userFollowersDataSource = DataSource()
     var currentTabViewIndex: Int = 0
- 
+    
+
+    public func loadUserFromApi(userName: String, handler: (user: User?) -> Void) {
+        Server.shareInstance.userDetailWithUserName(userName,
+            completoinHandler: { user in
+                handler(user: user)
+            },
+            errorHandler: { errors in
+                handler(user: nil)
+            })
+    }
     
     public func loadDataFromApiWithIsFirst(isFirst: Bool, currentIndex: Int, userName: String, handler: (array: NSArray) -> Void) {
         

@@ -138,6 +138,6 @@ public class Repository: NSObject {
     }
     
     override public var description: String {
-        return "my id: \(id!) \n"
+        return JSON(self).description
     }
 }

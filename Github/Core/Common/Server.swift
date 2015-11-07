@@ -11,13 +11,12 @@ import Alamofire
 import SwiftyJSON
 
 public class Server: NSObject {
-    //NSMutableDictionary *header=[NSMutableDictionary dictionaryWithObject:@"application/vnd.github.v3+json" forKey:@"Accept"];
-   // self = [self initWithHostName:@"api.github.com" customHeaderFields:header];
     
-    static let customHeaderFields = ["Accept": "application/vnd.github.v3+json"]
+    static let Headers = ["Accept": "application/vnd.github.v3.text-match+json"]
 
     struct URL {
         static let Host: String = "https://api.github.com"
+        static let User: String = Host + "/users/%@" // users/:username
         static let Users: String = Host + "/search/users" // sort=followers&order=desc&q=language:java
         static let Repositories: String = Host + "/search/repositories"
         static let UserRepositories: String = Host + "/users/%@/repos" // /users/frodoking/repos
@@ -34,12 +33,12 @@ public class Server: NSObject {
     
     // https://developer.github.com/v3/search/#search-users
     // Search users
-    public func searchUsersWithPage(page: Int, q: String, sort: String, categoryLocation: String, categoryLanguage: String,
+    public func searchUsersWithPage(page: Int, q: String, sort: String, location: String, language: String,
         completoinHandler: (users: [User], page: Int, totalCount: Int) -> Void,
         errorHandler: (errors: AnyObject) -> Void) {
             let params = ["sort": "\(sort)", "q": "\(q)", "page": "\(page)"]
             NSLog("Fetch: Host: \(Server.URL.Users) , params: \(params)")
-            Alamofire.request(.GET, Server.URL.Users, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
+            Alamofire.request(.GET, Server.URL.Users, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
                 if response.result.isSuccess {
                     NSLog("======= Success Response ======= ")
@@ -60,8 +59,8 @@ public class Server: NSObject {
                             user.parseJson(item)
                             
                             user.rank = Int((page-1)*30+(i+1))
-                            user.categoryLanguage = categoryLanguage;
-                            user.categoryLocation = categoryLocation;
+                            user.categoryLanguage = language;
+                            user.categoryLocation = location;
                             user.id = NSDate.timeIntervalSinceReferenceDate()
                             users.append(user)
                         }
@@ -84,7 +83,7 @@ public class Server: NSObject {
         errorHandler: (errors: AnyObject) -> Void) {
             let params = ["sort": "\(sort)", "q": "\(q)", "page": "\(page)"]
             NSLog("Fetch: Host: \(Server.URL.Repositories) , params: \(params)")
-            Alamofire.request(.GET, Server.URL.Repositories, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
+            Alamofire.request(.GET, Server.URL.Repositories, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
                     if response.result.isSuccess {
                         NSLog("======= Success ======= ")
@@ -113,6 +112,34 @@ public class Server: NSObject {
             }
     }
     
+    //https://developer.github.com/v3/users/#get-a-single-user
+    //Get a single user ,GET /users/:username
+    public func userDetailWithUserName(userName: String,
+        completoinHandler: (user: User) -> Void,
+        errorHandler: (errors: AnyObject) -> Void) {
+        let url: String = NSString.init(format: Server.URL.User, userName) as String
+        NSLog("Fetch: Host: \(url)")
+        Alamofire.request(.GET, url, parameters: nil, encoding: ParameterEncoding.URL, headers: Server.Headers)
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    NSLog("======= Success ======= ")
+                    if let json = response.result.value {
+                        let jsonObject = JSON(json)
+                        let user = User()
+                        user.parseJson(jsonObject)
+                        print(user)
+                        completoinHandler(user: user)
+                    }
+                } else {
+                    if(response.result.error != nil) {
+                        NSLog("Error: \(response.result.error)")
+                        errorHandler(errors: response.result.error!)
+                    }
+                }
+        }
+
+    }
+    
     //https://developer.github.com/v3/repos/#list-user-repositories
     //List user repositories
     //GET /users/:username/repos?sort=updated&page=%ld
@@ -122,7 +149,7 @@ public class Server: NSObject {
             let params = ["page": "\(page)", "sort": "\(sort)"]
             let url: String = NSString.init(format: Server.URL.UserRepositories, userName) as String
             NSLog("Fetch: Host: \(url) , params: \(params)")
-            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
+            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
                     if response.result.isSuccess {
                         NSLog("======= Success ======= ")
@@ -159,7 +186,7 @@ public class Server: NSObject {
             let params = ["page": "\(page)"]
             let url: String = NSString.init(format: Server.URL.UserFollowing, userName) as String
             NSLog("Fetch: Host: \(url) , params: \(params)")
-            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
+            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
                     if response.result.isSuccess {
                         NSLog("======= Success ======= ")
@@ -197,7 +224,7 @@ public class Server: NSObject {
             let params = ["page": "\(page)"]
             let url: String = NSString.init(format: Server.URL.UserFollowers, userName) as String
             NSLog("Fetch: Host: \(url) , params: \(params)")
-            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.customHeaderFields)
+            Alamofire.request(.GET, url, parameters: params, encoding: ParameterEncoding.URL, headers: Server.Headers)
                 .responseJSON { response in
                     if response.result.isSuccess {
                         NSLog("======= Success ======= ")

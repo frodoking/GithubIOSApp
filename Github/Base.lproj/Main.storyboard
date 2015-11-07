@@ -148,7 +148,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aeu-fk-VOi">
-                                <rect key="frame" x="118" y="161" width="122" height="20"/>
+                                <rect key="frame" x="118" y="161" width="462" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="12o-NS-hHv"/>
@@ -157,6 +157,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PB5-23-YBm"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgz-fJ-CE3">
                                 <rect key="frame" x="118" y="72" width="130" height="25"/>
@@ -262,6 +267,7 @@
                             <constraint firstItem="CKI-xH-iSW" firstAttribute="top" secondItem="Dgz-fJ-CE3" secondAttribute="bottom" constant="8" symbolic="YES" id="ejQ-Ae-BNE"/>
                             <constraint firstItem="HAM-Ln-Ykb" firstAttribute="leading" secondItem="gL5-P0-5Ve" secondAttribute="leading" id="ewX-AK-Azi"/>
                             <constraint firstItem="hNX-DU-Dbs" firstAttribute="top" secondItem="CKI-xH-iSW" secondAttribute="bottom" constant="8" symbolic="YES" id="fic-LQ-RUT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Aeu-fk-VOi" secondAttribute="trailing" id="gMw-Pa-K0G"/>
                             <constraint firstItem="HAM-Ln-Ykb" firstAttribute="top" secondItem="gL5-P0-5Ve" secondAttribute="bottom" constant="8" symbolic="YES" id="li4-8n-fzW"/>
                             <constraint firstItem="vJ7-yC-NTS" firstAttribute="top" secondItem="HAM-Ln-Ykb" secondAttribute="bottom" constant="8" symbolic="YES" id="lrB-Zv-gXa"/>
                             <constraint firstItem="Aeu-fk-VOi" firstAttribute="top" secondItem="hNX-DU-Dbs" secondAttribute="bottom" constant="8" symbolic="YES" id="mWW-MW-YIr"/>

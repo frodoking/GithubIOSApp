@@ -28,14 +28,12 @@ public class UsersViewModule {
         if !language.isEmpty && !location.isEmpty {
             q = "location:\(location)+language:\(language)"
         } else if language.isEmpty && !location.isEmpty {
-             q = "location:\(location)"
+            q = "location:\(location)"
         } else if !language.isEmpty && location.isEmpty {
             q = "language:\(language)"
-        } else {
-            q = ""
         }
         
-        Server.shareInstance.searchUsersWithPage(page, q: q, sort: "followers", categoryLocation: location, categoryLanguage: language, completoinHandler: { (users, page, totalCount) -> Void in
+        Server.shareInstance.searchUsersWithPage(page, q: q, sort: "followers", location: location, language: language, completoinHandler: { (users, page, totalCount) -> Void in
             if (page <= 1) {
                  self.dataSource.reset()
             }
