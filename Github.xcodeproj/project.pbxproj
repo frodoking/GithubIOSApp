@@ -32,6 +32,8 @@
 		7EA999371BE84CBF0001E991 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA999361BE84CBF0001E991 /* UsersViewController.swift */; };
 		7EA999391BE84CD10001E991 /* UsersViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA999381BE84CD10001E991 /* UsersViewModule.swift */; };
 		7EA9993B1BE84CE70001E991 /* RepositoriesViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9993A1BE84CE70001E991 /* RepositoriesViewModule.swift */; };
+		7EA999711BEDDA530001E991 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA999701BEDDA530001E991 /* RepositoryDetailViewController.swift */; };
+		7EA999731BEDDA740001E991 /* RepositoryDetailViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA999721BEDDA740001E991 /* RepositoryDetailViewModule.swift */; };
 		7ECE8EC11BDF03F4003D0078 /* UserDetailViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECE8EC01BDF03F4003D0078 /* UserDetailViewModule.swift */; };
 		7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */; };
 		7EEDBFCF1BD8C62500D576A9 /* CountyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */; };
@@ -167,6 +169,8 @@
 		7EA999361BE84CBF0001E991 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersViewController.swift; path = Core/Module/Users/UsersViewController.swift; sourceTree = "<group>"; };
 		7EA999381BE84CD10001E991 /* UsersViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersViewModule.swift; path = Core/Module/Users/UsersViewModule.swift; sourceTree = "<group>"; };
 		7EA9993A1BE84CE70001E991 /* RepositoriesViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesViewModule.swift; path = Core/Module/Repositories/RepositoriesViewModule.swift; sourceTree = "<group>"; };
+		7EA999701BEDDA530001E991 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryDetailViewController.swift; path = Core/Module/Repositories/RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		7EA999721BEDDA740001E991 /* RepositoryDetailViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryDetailViewModule.swift; path = Core/Module/Repositories/RepositoryDetailViewModule.swift; sourceTree = "<group>"; };
 		7ECE8EC01BDF03F4003D0078 /* UserDetailViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDetailViewModule.swift; path = Core/Module/Users/UserDetailViewModule.swift; sourceTree = "<group>"; };
 		7EEDBFCC1BD8C59E00D576A9 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageTableViewController.swift; path = Core/Common/LanguageTableViewController.swift; sourceTree = "<group>"; };
 		7EEDBFCE1BD8C62500D576A9 /* CountyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountyTableViewController.swift; path = Core/Common/CountyTableViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				7E9776AD1BDA0F30001E1904 /* RepositoriesTableViewController.swift */,
+				7EA999701BEDDA530001E991 /* RepositoryDetailViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA9993A1BE84CE70001E991 /* RepositoriesViewModule.swift */,
+				7EA999721BEDDA740001E991 /* RepositoryDetailViewModule.swift */,
 			);
 			name = ViewModule;
 			sourceTree = "<group>";
@@ -576,6 +582,8 @@
 				7EEDBFCD1BD8C59E00D576A9 /* LanguageTableViewController.swift in Sources */,
 				7EA9992E1BE84B5F0001E991 /* Theme.swift in Sources */,
 				7EA999391BE84CD10001E991 /* UsersViewModule.swift in Sources */,
+				7EA999711BEDDA530001E991 /* RepositoryDetailViewController.swift in Sources */,
+				7EA999731BEDDA740001E991 /* RepositoryDetailViewModule.swift in Sources */,
 				7E9776AE1BDA0F30001E1904 /* RepositoriesTableViewController.swift in Sources */,
 				7EA9991F1BE84A8B0001E991 /* Repository.swift in Sources */,
 				7EA999321BE84BB00001E991 /* HomeTabViewController.swift in Sources */,

@@ -93,6 +93,15 @@ extension RepositoriesTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let viewController = segue.destinationViewController
+        if let detailViewController = viewController as? RepositoryDetailViewController {
+            if let cell = sender as? RepositoryTableViewCell {
+                let selectedIndex = tableView.indexPathForCell(cell)?.section
+                if let index = selectedIndex {
+                    detailViewController.repository = repositories[index]
+                }
+            }
+        }
     }
 }
 

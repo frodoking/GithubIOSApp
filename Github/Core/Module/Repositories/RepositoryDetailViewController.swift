@@ -1,25 +1,21 @@
 //
-//  UserDetailViewController.swift
+//  RepositoryDetailViewController.swift
 //  Github
 //
-//  Created by frodo on 15/10/25.
+//  Created by frodo on 15/11/7.
 //  Copyright © 2015年 frodo. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UITableViewDataSource, UITableViewDelegate {
+class RepositoryDetailViewController: UIViewController ,ViewPagerIndicatorDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var titleImageView: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var emaiButton: UIButton!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var blogButton: UIButton!
-    @IBOutlet weak var companyLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var createLabel: UILabel!
-    
+    @IBOutlet weak var nameBt: UIButton!
+    @IBOutlet weak var headImageView: UIImageView!
+    @IBOutlet weak var createDateLabel: UILabel!
+    @IBOutlet weak var homePageBt: UIButton!
+    @IBOutlet weak var descLabel: UILabel!
     
     @IBOutlet weak var viewPagerIndicator: ViewPagerIndicator!
     @IBOutlet weak var tableView: UITableView!
@@ -31,7 +27,7 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     }()
     
     
-    var viewModule: UserDetailViewModule?
+    var viewModule: RepositoryDetailViewModule?
     var tabIndex: Int = 0
     var array: NSArray? {
         didSet {
@@ -39,55 +35,38 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         }
     }
     
-    var user: User? {
+    var repository: Repository? {
         didSet {
-            self.title = user?.login
+            self.title = repository?.name
         }
     }
     
-    private func updateUserInfo () {
-        if let avatar_url = user!.avatar_url {
+    private func updateRepositoryInfo () {
+        if let avatar_url = repository?.owner!.avatar_url {
             Alamofire.request(.GET, avatar_url)
                 .responseData { response in
                     NSLog("Fetch: Image: \(avatar_url)")
                     let imageData = UIImage(data: response.data!)
-                    self.titleImageView?.image = imageData
+                    self.headImageView?.image = imageData
             }
         }
         
-        if let login = user!.login {
-            loginButton.setTitle(login, forState:UIControlState.Normal)
+        if let name = repository!.name {
+            nameBt.setTitle(name, forState:UIControlState.Normal)
         }
         
-        if let email = user!.email {
-            emaiButton.setTitle(email, forState:UIControlState.Normal)
+        if let homePage = repository!.homepage {
+            homePageBt.setTitle(homePage, forState:UIControlState.Normal)
         }
         
-        if let name = user!.name {
-            nameLabel.text = name
+        if let created_at = repository!.created_at {
+            createDateLabel.text = created_at
         }
-        
-        if let blog = user!.blog {
-            blogButton.setTitle(blog, forState:UIControlState.Normal)
-        }
-        
-        if let company = user!.company {
-            companyLabel.text = company
-        }
-        
-        if let location = user!.location {
-            locationLabel.text = location
-        }
-        
-        if let created_at = user!.created_at {
-            createLabel.text = created_at
+        if let desc = repository!.repositoryDescription {
+            descLabel.text = desc
         }
     }
     
-    @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -97,24 +76,16 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         
         self.navigationController?.navigationBar.backgroundColor = Theme.Color
         
-        titleImageView.layer.cornerRadius = 10
-        titleImageView.layer.borderColor = Theme.GrayColor.CGColor
-        titleImageView.layer.borderWidth = 0.3
-        titleImageView.layer.masksToBounds=true
+        headImageView.layer.cornerRadius = 10
+        headImageView.layer.borderColor = Theme.GrayColor.CGColor
+        headImageView.layer.borderWidth = 0.3
+        headImageView.layer.masksToBounds=true
         
-        viewModule = UserDetailViewModule()
-        if self.user != nil {
-            viewModule?.loadUserFromApi((self.user!.login)!, handler: { user in
-                if user != nil {
-                    self.user = user
-                    self.updateUserInfo()
-                }
-            })
-        }
+        viewModule = RepositoryDetailViewModule()
         
-        updateUserInfo()
-        
-        viewPagerIndicator.titles = UserDetailViewModule.Indicator
+        updateRepositoryInfo()
+     
+        viewPagerIndicator.titles = RepositoryDetailViewModule.Indicator
         //监听ViewPagerIndicator选中项变化
         viewPagerIndicator.delegate = self
         
@@ -136,36 +107,37 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         viewPagerIndicator.setSelectedIndex(tabIndex)
     }
     
+    @IBAction func backAction(sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     func refreshAction(sender: UIRefreshControl) {
         self.refreshControl.beginRefreshing()
         
-        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
-            handler: { array in
-                self.refreshControl.endRefreshing()
-                
-                if array.count > 0 {
-                    self.array = array
-                }
-        })
+//        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
+//            handler: { array in
+//                self.refreshControl.endRefreshing()
+//                
+//                if array.count > 0 {
+//                    self.array = array
+//                }
+//        })
     }
 }
 
 // MARK: - ViewPagerIndicator
-extension UserDetailViewController {
+extension RepositoryDetailViewController {
     // 点击顶部选中后回调
     func indicatorChange(indicatorIndex: Int) {
         self.tabIndex = indicatorIndex
         switch indicatorIndex {
-            case 0:
-                self.array = viewModule!.userRepositoriesDataSource.dsArray
-                break
-            case 1:
-                self.array = viewModule!.userRepositoriesDataSource.dsArray
-                break
-            case 2:
-                self.array = viewModule!.userRepositoriesDataSource.dsArray
-                break
-            default:break
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            break
+        default:break
         }
         
         self.refreshAction(self.refreshControl)
@@ -173,7 +145,7 @@ extension UserDetailViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension UserDetailViewController {
+extension RepositoryDetailViewController {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if array == nil {
@@ -189,26 +161,17 @@ extension UserDetailViewController {
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if tabIndex == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.RepositoryCell, forIndexPath: indexPath) as! RepositoryTableViewCell
-            cell.repository = self.array![indexPath.section] as? Repository
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
-            cell.user = self.array![indexPath.section] as? User
-            return cell
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
+        cell.user = self.array![indexPath.section] as? User
+        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if tabIndex == 0 {
-            return Theme.RepositoryTableViewCellheight
-        }
         return Theme.UserTableViewCellHeight
     }
 }
 // MARK: - Navigation
-extension UserDetailViewController {
+extension RepositoryDetailViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -216,5 +179,6 @@ extension UserDetailViewController {
         // Pass the selected object to the new view controller.
     }
 }
+
 
 
