@@ -42,28 +42,30 @@ class RepositoryDetailViewController: UIViewController ,ViewPagerIndicatorDelega
     }
     
     private func updateRepositoryInfo () {
-        if let avatar_url = repository?.owner!.avatar_url {
-            Alamofire.request(.GET, avatar_url)
-                .responseData { response in
-                    NSLog("Fetch: Image: \(avatar_url)")
-                    let imageData = UIImage(data: response.data!)
-                    self.headImageView?.image = imageData
+        if let _ = repository {
+            if let avatar_url = repository?.owner!.avatar_url {
+                Alamofire.request(.GET, avatar_url)
+                    .responseData { response in
+                        NSLog("Fetch: Image: \(avatar_url)")
+                        let imageData = UIImage(data: response.data!)
+                        self.headImageView?.image = imageData
+                }
             }
-        }
-        
-        if let name = repository!.name {
-            nameBt.setTitle("\((repository?.owner?.login)!)/\(name)", forState:UIControlState.Normal)
-        }
-        
-        if let homePage = repository!.homepage {
-            homePageBt.setTitle(homePage, forState:UIControlState.Normal)
-        }
-        
-        if let created_at = repository!.created_at {
-            createDateLabel.text = created_at
-        }
-        if let desc = repository!.repositoryDescription {
-            descLabel.text = desc
+            
+            if let name = repository!.name {
+                nameBt.setTitle("\((repository?.owner?.login)!)/\(name)", forState:UIControlState.Normal)
+            }
+            
+            if let homePage = repository!.homepage {
+                homePageBt.setTitle(homePage, forState:UIControlState.Normal)
+            }
+            
+            if let created_at = repository!.created_at {
+                createDateLabel.text = created_at
+            }
+            if let desc = repository!.repositoryDescription {
+                descLabel.text = desc
+            }
         }
     }
     
@@ -105,23 +107,30 @@ class RepositoryDetailViewController: UIViewController ,ViewPagerIndicatorDelega
         self.tableView.delegate = self
         
         viewPagerIndicator.setSelectedIndex(tabIndex)
+        refreshAction(refreshControl)
     }
     
     @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        if let prevViewController = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] {
+            self.navigationController?.popToViewController(prevViewController, animated: true)
+        } else {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
     
     func refreshAction(sender: UIRefreshControl) {
         self.refreshControl.beginRefreshing()
         
-        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (repository?.owner?.login)!, repositoryName: (repository?.name)!,
-            handler: { array in
-                self.refreshControl.endRefreshing()
-                
-                if array.count > 0 {
-                    self.array = array
-                }
-        })
+        if let _ = repository {
+            viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (repository?.owner?.login)!, repositoryName: (repository?.name)!,
+                handler: { array in
+                    self.refreshControl.endRefreshing()
+                    
+                    if array.count > 0 {
+                        self.array = array
+                    }
+            })
+        }
     }
 }
 
@@ -132,10 +141,13 @@ extension RepositoryDetailViewController {
         self.tabIndex = indicatorIndex
         switch indicatorIndex {
         case 0:
+            self.array = viewModule!.contributorsDataSource.dsArray
             break
         case 1:
+            self.array = viewModule!.forksDataSource.dsArray
             break
         case 2:
+            self.array = viewModule!.stargazersDataSource.dsArray
             break
         default:break
         }
@@ -159,7 +171,6 @@ extension RepositoryDetailViewController {
         return 1
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Key.CellReuseIdentifier.UserCell, forIndexPath: indexPath) as! UserTableViewCell
         if let user = self.array![indexPath.section] as? User {
@@ -180,8 +191,15 @@ extension RepositoryDetailViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let viewController = segue.destinationViewController
+        if let userDetailViewController = viewController as? UserDetailViewController {
+            if let cell = sender as? UserTableViewCell {
+                let selectedIndex = tableView.indexPathForCell(cell)?.section
+                if let index = selectedIndex {
+                    userDetailViewController.user = self.array![index] as? User
+                }
+            }
+        }
     }
 }
 

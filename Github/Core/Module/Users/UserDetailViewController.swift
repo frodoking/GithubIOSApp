@@ -46,46 +46,45 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
     }
     
     private func updateUserInfo () {
-        if let avatar_url = user!.avatar_url {
-            Alamofire.request(.GET, avatar_url)
-                .responseData { response in
-                    NSLog("Fetch: Image: \(avatar_url)")
-                    let imageData = UIImage(data: response.data!)
-                    self.titleImageView?.image = imageData
+        if let _ = user {
+            if let avatar_url = user!.avatar_url {
+                Alamofire.request(.GET, avatar_url)
+                    .responseData { response in
+                        NSLog("Fetch: Image: \(avatar_url)")
+                        let imageData = UIImage(data: response.data!)
+                        self.titleImageView?.image = imageData
+                }
             }
+            
+            if let login = user!.login {
+                loginButton.setTitle(login, forState:UIControlState.Normal)
+            }
+            
+            if let email = user!.email {
+                emaiButton.setTitle(email, forState:UIControlState.Normal)
+            }
+            
+            if let name = user!.name {
+                nameLabel.text = name
+            }
+            
+            if let blog = user!.blog {
+                blogButton.setTitle(blog, forState:UIControlState.Normal)
+            }
+            
+            if let company = user!.company {
+                companyLabel.text = company
+            }
+            
+            if let location = user!.location {
+                locationLabel.text = location
+            }
+            
+            if let created_at = user!.created_at {
+                createLabel.text = created_at
+            }
+            
         }
-        
-        if let login = user!.login {
-            loginButton.setTitle(login, forState:UIControlState.Normal)
-        }
-        
-        if let email = user!.email {
-            emaiButton.setTitle(email, forState:UIControlState.Normal)
-        }
-        
-        if let name = user!.name {
-            nameLabel.text = name
-        }
-        
-        if let blog = user!.blog {
-            blogButton.setTitle(blog, forState:UIControlState.Normal)
-        }
-        
-        if let company = user!.company {
-            companyLabel.text = company
-        }
-        
-        if let location = user!.location {
-            locationLabel.text = location
-        }
-        
-        if let created_at = user!.created_at {
-            createLabel.text = created_at
-        }
-    }
-    
-    @IBAction func backAction(sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     override func viewDidLoad() {
@@ -134,19 +133,30 @@ class UserDetailViewController: UIViewController, ViewPagerIndicatorDelegate, UI
         self.tableView.delegate = self
         
         viewPagerIndicator.setSelectedIndex(tabIndex)
+        refreshAction(refreshControl)
     }
     
     func refreshAction(sender: UIRefreshControl) {
         self.refreshControl.beginRefreshing()
         
-        viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
-            handler: { array in
-                self.refreshControl.endRefreshing()
-                
-                if array.count > 0 {
-                    self.array = array
-                }
-        })
+        if let _ = user {
+            viewModule?.loadDataFromApiWithIsFirst(true, currentIndex: tabIndex, userName: (user?.login)!,
+                handler: { array in
+                    self.refreshControl.endRefreshing()
+                    
+                    if array.count > 0 {
+                        self.array = array
+                    }
+            })
+        }
+    }
+    
+    @IBAction func backAction(sender: UIBarButtonItem) {
+        if let prevViewController = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] {
+            self.navigationController?.popToViewController(prevViewController, animated: true)
+        } else {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
 }
 
@@ -160,10 +170,10 @@ extension UserDetailViewController {
                 self.array = viewModule!.userRepositoriesDataSource.dsArray
                 break
             case 1:
-                self.array = viewModule!.userRepositoriesDataSource.dsArray
+                self.array = viewModule!.userFollowingDataSource.dsArray
                 break
             case 2:
-                self.array = viewModule!.userRepositoriesDataSource.dsArray
+                self.array = viewModule!.userFollowersDataSource.dsArray
                 break
             default:break
         }
@@ -214,6 +224,22 @@ extension UserDetailViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let viewController = segue.destinationViewController
+        if let userDetailViewController = viewController as? UserDetailViewController {
+            if let cell = sender as? UserTableViewCell {
+                let selectedIndex = tableView.indexPathForCell(cell)?.section
+                if let index = selectedIndex {
+                    userDetailViewController.user = self.array![index] as? User
+                }
+            }
+        } else if let repositoryDetailViewController = viewController as? RepositoryDetailViewController {
+            if let cell = sender as? RepositoryTableViewCell {
+                let selectedIndex = tableView.indexPathForCell(cell)?.section
+                if let index = selectedIndex {
+                    repositoryDetailViewController.repository = self.array![index] as? Repository
+                }
+            }
+        }
     }
 }
 
