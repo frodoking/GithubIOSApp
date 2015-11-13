@@ -23,7 +23,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     var viewModule: UsersViewModule?
     var tabIndex: Int = 0
-    var language: String = "JavaScript" {
+    var language: String = "" {
         didSet {
             self.title = language
         }
@@ -56,7 +56,6 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         
         viewModule = UsersViewModule()
         
-        
         viewPagerIndicator.titles = [city, country, "World"]
         //监听ViewPagerIndicator选中项变化
         viewPagerIndicator.delegate = self
@@ -83,6 +82,7 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
     
     override func viewDidAppear(animated: Bool) {
         viewPagerIndicator.setSelectedIndex(tabIndex)
+        refreshAction(refreshControl)
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -85,7 +85,7 @@ class UserTableViewCell: UITableViewCell {
             
             Alamofire.request(.GET, (user.avatar_url)!)
                 .responseData { response in
-                    NSLog("Fetch: Image: \(self.user?.avatar_url)")
+//                    NSLog("Fetch: Image: \(self.user?.avatar_url)")
                     let imageData = UIImage(data: response.data!)
                     self.titleImageView?.image = imageData
             }

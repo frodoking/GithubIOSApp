@@ -59,7 +59,10 @@ class LanguageTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let language = languages[indexPath.section]
+        var language = languages[indexPath.section]
+        if indexPath.section == 0 {
+            language = ""
+        }
         if let prevViewController = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] {
             switch prevViewController {
             case is UsersViewController:
