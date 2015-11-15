@@ -29,5 +29,9 @@ pod update
 * 个人技术Blog：http://frodoking.github.io/
 
 ##App预览
-
+<img  src="https://raw.githubusercontent.com/coderyi/Monkey/master/Documents/images/6p-1.png" width="320" height="570">
+<img  src="https://raw.githubusercontent.com/coderyi/Monkey/master/Documents/images/6p-2.png" width="320" height="570"> 
+<img  src="https://raw.githubusercontent.com/coderyi/Monkey/master/Documents/images/6p-3.png" width="320" height="570"> 
+<img  src="https://raw.githubusercontent.com/coderyi/Monkey/master/Documents/images/6p-4.png" width="320" height="570">
+<img  src="https://raw.githubusercontent.com/coderyi/Monkey/master/Documents/images/6p-5.png" width="320" height="570">
 
