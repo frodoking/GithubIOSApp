@@ -30,13 +30,11 @@ class RepositoriesTableViewController: UITableViewController {
         viewModule = RepositoriesViewModule()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.hidesBottomBarWhenPushed = true
+    override func viewWillAppear(animated: Bool) { 
         refresh()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.hidesBottomBarWhenPushed = false
+    override func viewWillDisappear(animated: Bool) { 
     }
     
     @IBAction func refreshAction(sender: UIRefreshControl) {

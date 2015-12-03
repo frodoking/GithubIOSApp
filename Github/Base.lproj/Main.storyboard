@@ -9,7 +9,7 @@
         <!--Country-->
         <scene sceneID="ieC-q5-O2J">
             <objects>
-                <tableViewController id="TNT-f0-Iaj" customClass="CountryTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="TNT-f0-Iaj" customClass="CountryTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T9N-MZ-dXg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
         <!--Language-->
         <scene sceneID="L9s-Dg-yGo">
             <objects>
-                <tableViewController id="Zla-ml-o6i" customClass="LanguageTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="Zla-ml-o6i" customClass="LanguageTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X3V-H5-VpM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Name-->
         <scene sceneID="6a8-tL-Kdf">
             <objects>
-                <viewController id="fBK-Y1-jhm" customClass="UserDetailViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="fBK-Y1-jhm" customClass="UserDetailViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nIA-jc-cHZ"/>
                         <viewControllerLayoutGuide type="bottom" id="nVC-s3-z9k"/>
@@ -323,7 +323,7 @@
         <!--Repository-->
         <scene sceneID="FmP-Ug-THq">
             <objects>
-                <viewController id="Z04-ah-trc" customClass="RepositoryDetailViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Z04-ah-trc" customClass="RepositoryDetailViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LP4-m1-y5j"/>
                         <viewControllerLayoutGuide type="bottom" id="7ar-rn-4DQ"/>
@@ -554,7 +554,7 @@
         <!--City-->
         <scene sceneID="2Du-jO-OVf">
             <objects>
-                <tableViewController id="KKP-8r-81Q" customClass="CityTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="KKP-8r-81Q" customClass="CityTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0EW-B4-Wzx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1055,7 +1055,7 @@
         <image name="more" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bT1-an-kE2"/>
+        <segue reference="ZOK-1T-8Og"/>
         <segue reference="hj9-TH-wVt"/>
         <segue reference="XXm-Qc-mQ7"/>
     </inferredMetricsTieBreakers>

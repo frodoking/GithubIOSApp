@@ -74,19 +74,11 @@ class UsersViewController: UIViewController, ViewPagerIndicatorDelegate, UITable
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.hidesBottomBarWhenPushed = true
-    }
+    } 
     
     override func viewDidAppear(animated: Bool) {
         viewPagerIndicator.setSelectedIndex(tabIndex)
         refreshAction(refreshControl)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.hidesBottomBarWhenPushed = false
     }
     
     func refreshAction(sender: UIRefreshControl) {

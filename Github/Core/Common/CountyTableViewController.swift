@@ -108,7 +108,7 @@ class CountryTableViewController: UITableViewController {
             }
 
             cityTableViewController.cities = cityArray
-            cityTableViewController.title = country
+            cityTableViewController.title = country 
         }
     }
 }
